@@ -8,7 +8,7 @@
 import SwiftUI
 import CoreLocationUI
 
-struct LoginView: View {
+struct VerifyLocationView: View {
     @EnvironmentObject var locationManager: LocationManager
     
     var body: some View {
@@ -34,8 +34,8 @@ struct LoginView: View {
     }
 }
 
-struct LoginView_Previews: PreviewProvider {
+struct VerifyLocationView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginView()
+        VerifyLocationView()
     }
 }

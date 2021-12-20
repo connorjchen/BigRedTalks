@@ -17,10 +17,8 @@ struct ContentView: View {
             if let location = locationManager.location {
                 Text("Location received \(location.latitude), \(location.latitude)")
                     .padding()
-//            } else if locationManager.isLoading {
-//                    LoadingView()
             } else {
-                LoginView()
+                VerifyLocationView()
                     .environmentObject(locationManager)
             }
         }
