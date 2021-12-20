@@ -14,7 +14,7 @@ struct VerifyLocationView: View {
     var body: some View {
         VStack {
             VStack(spacing: 20) {
-                Text("Welcome to the Big Red Talks")
+                Text("Welcome to Big Red Talks")
                     .bold().font(.title)
                 Text("Please share your current location to verify you are by the Cornell Campus")
                     .padding()

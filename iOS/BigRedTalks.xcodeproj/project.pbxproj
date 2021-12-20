@@ -14,6 +14,7 @@
 		904944B9277125D0000FE816 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904944B8277125D0000FE816 /* LoadingView.swift */; };
 		904944BB27712775000FE816 /* VerifyLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904944BA27712775000FE816 /* VerifyLocationView.swift */; };
 		904944BF277127C3000FE816 /* LocationManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904944BE277127C3000FE816 /* LocationManger.swift */; };
+		904944C12771406E000FE816 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904944C02771406E000FE816 /* LoginView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		904944B8277125D0000FE816 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		904944BA27712775000FE816 /* VerifyLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyLocationView.swift; sourceTree = "<group>"; };
 		904944BE277127C3000FE816 /* LocationManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManger.swift; sourceTree = "<group>"; };
+		904944C02771406E000FE816 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 				901C27572770FBC30043CFFE /* ContentView.swift */,
 				904944B8277125D0000FE816 /* LoadingView.swift */,
 				904944BA27712775000FE816 /* VerifyLocationView.swift */,
+				904944C02771406E000FE816 /* LoginView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -162,6 +165,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				904944C12771406E000FE816 /* LoginView.swift in Sources */,
 				901C27582770FBC30043CFFE /* ContentView.swift in Sources */,
 				901C27562770FBC30043CFFE /* BigRedTalksApp.swift in Sources */,
 				904944BB27712775000FE816 /* VerifyLocationView.swift in Sources */,
