@@ -11,6 +11,9 @@
 		901C27582770FBC30043CFFE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901C27572770FBC30043CFFE /* ContentView.swift */; };
 		901C275A2770FBC60043CFFE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 901C27592770FBC60043CFFE /* Assets.xcassets */; };
 		901C275D2770FBC60043CFFE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 901C275C2770FBC60043CFFE /* Preview Assets.xcassets */; };
+		904944B9277125D0000FE816 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904944B8277125D0000FE816 /* LoadingView.swift */; };
+		904944BB27712775000FE816 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904944BA27712775000FE816 /* LoginView.swift */; };
+		904944BF277127C3000FE816 /* LocationManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904944BE277127C3000FE816 /* LocationManger.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +22,9 @@
 		901C27572770FBC30043CFFE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		901C27592770FBC60043CFFE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		901C275C2770FBC60043CFFE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		904944B8277125D0000FE816 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		904944BA27712775000FE816 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		904944BE277127C3000FE816 /* LocationManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManger.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,8 +57,9 @@
 		901C27542770FBC30043CFFE /* BigRedTalks */ = {
 			isa = PBXGroup;
 			children = (
+				904944BD277127B3000FE816 /* Managers */,
+				903DBD5E2771239600BB2B02 /* Views */,
 				901C27552770FBC30043CFFE /* BigRedTalksApp.swift */,
-				901C27572770FBC30043CFFE /* ContentView.swift */,
 				901C27592770FBC60043CFFE /* Assets.xcassets */,
 				901C275B2770FBC60043CFFE /* Preview Content */,
 			);
@@ -65,6 +72,24 @@
 				901C275C2770FBC60043CFFE /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		903DBD5E2771239600BB2B02 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				901C27572770FBC30043CFFE /* ContentView.swift */,
+				904944B8277125D0000FE816 /* LoadingView.swift */,
+				904944BA27712775000FE816 /* LoginView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		904944BD277127B3000FE816 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				904944BE277127C3000FE816 /* LocationManger.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,6 +164,9 @@
 			files = (
 				901C27582770FBC30043CFFE /* ContentView.swift in Sources */,
 				901C27562770FBC30043CFFE /* BigRedTalksApp.swift in Sources */,
+				904944BB27712775000FE816 /* LoginView.swift in Sources */,
+				904944B9277125D0000FE816 /* LoadingView.swift in Sources */,
+				904944BF277127C3000FE816 /* LocationManger.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,6 +300,7 @@
 				DEVELOPMENT_TEAM = 627DJ92YM8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This app needs your location to verify you are by the Cornell Campus.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -301,6 +330,7 @@
 				DEVELOPMENT_TEAM = 627DJ92YM8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This app needs your location to verify you are by the Cornell Campus.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
