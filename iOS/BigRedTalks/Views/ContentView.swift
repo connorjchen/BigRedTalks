@@ -15,15 +15,19 @@ struct ContentView: View {
     var body: some View {
         VStack {
             if let location = locationManager.location {
-                Text("Location received \(location.latitude), \(location.latitude)")
-                    .padding()
-            } else {
-                VerifyLocationView()
+                if (42.434270 < location.latitude && 42.459245 > location.latitude && -76.496569 < location.longitude && -76.469553 > location.longitude) {
+                    // insert sign in screen here and then look for user to get to edit profile and messaging
+                    Text("Location is within Cornell \(location.latitude), \(location.latitude)")
+                        .padding()
+                            } else {
+                    OutOfBoundsView()
+                }
+            } else {            
+                WelcomeView()
                     .environmentObject(locationManager)
             }
         }
-        .background(Color(hue: 1.0, saturation: 1.0, brightness: 0.46))
-        .preferredColorScheme(.dark)
+        .preferredColorScheme(.light)
     }
 }
 

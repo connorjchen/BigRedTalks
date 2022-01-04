@@ -13,7 +13,7 @@ import SwiftUI
 class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     var locationManager: CLLocationManager?
     @Published var location: CLLocationCoordinate2D?
-//    @Published var isLoading = false
+    @Published var locationError: String = ""
     
     func checkIfLocationServicesIsEnabled() {
         if CLLocationManager.locationServicesEnabled() {
@@ -32,9 +32,9 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
             case .notDetermined:
                 locationManager.requestWhenInUseAuthorization()
             case .restricted:
-                print("Your location is rectricted likely due to parental controls")
+                locationError = "Your location is rectricted likely due to parental controls"
             case .denied:
-                print("You have denied this app location permission. Go into settings to change it")
+                locationError = "You have denied this app location permission. Go into settings to change it"
             case .authorizedAlways, .authorizedWhenInUse:
                 location = locationManager.location!.coordinate
             @unknown default:
@@ -45,14 +45,4 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         checkLocationAuthorization()
     }
-    
-//    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-//        location = locations.first?.coordinate
-//        isLoading = false
-//    }
-//
-//    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error){
-//        print("Error getting location", error)
-//        isLoading = false
-//    }
 }

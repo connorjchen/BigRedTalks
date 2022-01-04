@@ -14,7 +14,7 @@ struct VerifyLocationView: View {
     var body: some View {
         VStack {
             VStack(spacing: 20) {
-                Text("Welcome to Big Red Talks")
+                Text("Connect with all Cornellians")
                     .bold().font(.title)
                 Text("Please share your current location to verify you are by the Cornell Campus")
                     .padding()
@@ -29,13 +29,18 @@ struct VerifyLocationView: View {
             .cornerRadius(30)
             .symbolVariant(.fill)
             .foregroundColor(.white)
+            
+            Text("\(locationManager.locationError)")
+                .padding()
+                .multilineTextAlignment(.center)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .navigationBarBackButtonHidden(true)
     }
 }
 
 struct VerifyLocationView_Previews: PreviewProvider {
     static var previews: some View {
-        VerifyLocationView()
+        VerifyLocationView().environmentObject(LocationManager())
     }
 }

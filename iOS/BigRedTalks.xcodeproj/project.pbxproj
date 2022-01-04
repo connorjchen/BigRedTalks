@@ -15,6 +15,9 @@
 		904944BB27712775000FE816 /* VerifyLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904944BA27712775000FE816 /* VerifyLocationView.swift */; };
 		904944BF277127C3000FE816 /* LocationManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904944BE277127C3000FE816 /* LocationManger.swift */; };
 		904944C12771406E000FE816 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904944C02771406E000FE816 /* LoginView.swift */; };
+		9082F1412784F62E0057AAC7 /* OutOfBoundsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9082F1402784F62E0057AAC7 /* OutOfBoundsView.swift */; };
+		9082F1432784FD430057AAC7 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9082F1422784FD430057AAC7 /* WelcomeView.swift */; };
+		9082F147278500980057AAC7 /* ButtonModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9082F146278500980057AAC7 /* ButtonModifiers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +30,9 @@
 		904944BA27712775000FE816 /* VerifyLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyLocationView.swift; sourceTree = "<group>"; };
 		904944BE277127C3000FE816 /* LocationManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManger.swift; sourceTree = "<group>"; };
 		904944C02771406E000FE816 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		9082F1402784F62E0057AAC7 /* OutOfBoundsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutOfBoundsView.swift; sourceTree = "<group>"; };
+		9082F1422784FD430057AAC7 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
+		9082F146278500980057AAC7 /* ButtonModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonModifiers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +65,7 @@
 		901C27542770FBC30043CFFE /* BigRedTalks */ = {
 			isa = PBXGroup;
 			children = (
+				9082F145278500760057AAC7 /* Utilities */,
 				904944BD277127B3000FE816 /* Managers */,
 				903DBD5E2771239600BB2B02 /* Views */,
 				901C27552770FBC30043CFFE /* BigRedTalksApp.swift */,
@@ -83,6 +90,8 @@
 				904944B8277125D0000FE816 /* LoadingView.swift */,
 				904944BA27712775000FE816 /* VerifyLocationView.swift */,
 				904944C02771406E000FE816 /* LoginView.swift */,
+				9082F1402784F62E0057AAC7 /* OutOfBoundsView.swift */,
+				9082F1422784FD430057AAC7 /* WelcomeView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -93,6 +102,14 @@
 				904944BE277127C3000FE816 /* LocationManger.swift */,
 			);
 			path = Managers;
+			sourceTree = "<group>";
+		};
+		9082F145278500760057AAC7 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				9082F146278500980057AAC7 /* ButtonModifiers.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -168,7 +185,10 @@
 				904944C12771406E000FE816 /* LoginView.swift in Sources */,
 				901C27582770FBC30043CFFE /* ContentView.swift in Sources */,
 				901C27562770FBC30043CFFE /* BigRedTalksApp.swift in Sources */,
+				9082F1432784FD430057AAC7 /* WelcomeView.swift in Sources */,
 				904944BB27712775000FE816 /* VerifyLocationView.swift in Sources */,
+				9082F1412784F62E0057AAC7 /* OutOfBoundsView.swift in Sources */,
+				9082F147278500980057AAC7 /* ButtonModifiers.swift in Sources */,
 				904944B9277125D0000FE816 /* LoadingView.swift in Sources */,
 				904944BF277127C3000FE816 /* LocationManger.swift in Sources */,
 			);
