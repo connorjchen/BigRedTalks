@@ -18,9 +18,13 @@
 		9082F1412784F62E0057AAC7 /* OutOfBoundsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9082F1402784F62E0057AAC7 /* OutOfBoundsView.swift */; };
 		9082F1432784FD430057AAC7 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9082F1422784FD430057AAC7 /* WelcomeView.swift */; };
 		9082F147278500980057AAC7 /* ButtonModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9082F146278500980057AAC7 /* ButtonModifiers.swift */; };
+		E41CF8506E93A187D32834E8 /* Pods_BigRedTalks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29E529B4B8A7189A6DA540E9 /* Pods_BigRedTalks.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0DA05D5882A23CDC8A82FCF9 /* Pods-BigRedTalks.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BigRedTalks.release.xcconfig"; path = "Target Support Files/Pods-BigRedTalks/Pods-BigRedTalks.release.xcconfig"; sourceTree = "<group>"; };
+		29E529B4B8A7189A6DA540E9 /* Pods_BigRedTalks.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BigRedTalks.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7FE0BABE80C631ED0AC299F4 /* Pods-BigRedTalks.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BigRedTalks.debug.xcconfig"; path = "Target Support Files/Pods-BigRedTalks/Pods-BigRedTalks.debug.xcconfig"; sourceTree = "<group>"; };
 		901C27522770FBC30043CFFE /* BigRedTalks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BigRedTalks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		901C27552770FBC30043CFFE /* BigRedTalksApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigRedTalksApp.swift; sourceTree = "<group>"; };
 		901C27572770FBC30043CFFE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -40,17 +44,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E41CF8506E93A187D32834E8 /* Pods_BigRedTalks.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		31FD6462F3D49128C7585231 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7FE0BABE80C631ED0AC299F4 /* Pods-BigRedTalks.debug.xcconfig */,
+				0DA05D5882A23CDC8A82FCF9 /* Pods-BigRedTalks.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		901C27492770FBC30043CFFE = {
 			isa = PBXGroup;
 			children = (
 				901C27542770FBC30043CFFE /* BigRedTalks */,
 				901C27532770FBC30043CFFE /* Products */,
+				31FD6462F3D49128C7585231 /* Pods */,
+				DE5CD1F77E3B8691B61CE5AB /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -112,6 +129,14 @@
 			path = Utilities;
 			sourceTree = "<group>";
 		};
+		DE5CD1F77E3B8691B61CE5AB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				29E529B4B8A7189A6DA540E9 /* Pods_BigRedTalks.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -119,9 +144,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 901C27602770FBC60043CFFE /* Build configuration list for PBXNativeTarget "BigRedTalks" */;
 			buildPhases = (
+				983ABA119E9750E7A4CEB2C4 /* [CP] Check Pods Manifest.lock */,
 				901C274E2770FBC30043CFFE /* Sources */,
 				901C274F2770FBC30043CFFE /* Frameworks */,
 				901C27502770FBC30043CFFE /* Resources */,
+				FC073F4CA84E750EFBB98B58 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -176,6 +203,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		983ABA119E9750E7A4CEB2C4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BigRedTalks-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FC073F4CA84E750EFBB98B58 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BigRedTalks/Pods-BigRedTalks-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BigRedTalks/Pods-BigRedTalks-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BigRedTalks/Pods-BigRedTalks-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		901C274E2770FBC30043CFFE /* Sources */ = {
@@ -315,6 +384,7 @@
 		};
 		901C27612770FBC60043CFFE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7FE0BABE80C631ED0AC299F4 /* Pods-BigRedTalks.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -345,6 +415,7 @@
 		};
 		901C27622770FBC60043CFFE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0DA05D5882A23CDC8A82FCF9 /* Pods-BigRedTalks.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
