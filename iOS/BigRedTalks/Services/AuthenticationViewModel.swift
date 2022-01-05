@@ -19,6 +19,7 @@ class AuthenticationViewModel: NSObject, ObservableObject {
     
     // 2
     @Published var state: SignInState = .signedOut
+    @Published var isNewUser: Bool = false
     
     // 3
     override init() {
@@ -70,11 +71,13 @@ extension AuthenticationViewModel: GIDSignInDelegate {
         if let authentication = user.authentication {
             let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
             
-            Auth.auth().signIn(with: credential) { (_, error) in
+            Auth.auth().signIn(with: credential) { (result, error) in
                 if let error = error {
                     print(error.localizedDescription)
                 } else {
                     self.state = .signedIn
+                    guard let newUserStatus = result?.additionalUserInfo?.isNewUser else {return}
+                    self.isNewUser = newUserStatus
                 }
             }
         }

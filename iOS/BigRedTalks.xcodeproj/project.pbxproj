@@ -15,10 +15,12 @@
 		901EF3D027853C1F00EAC7C6 /* MessagingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901EF3CF27853C1F00EAC7C6 /* MessagingView.swift */; };
 		904944B9277125D0000FE816 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904944B8277125D0000FE816 /* LoadingView.swift */; };
 		904944BB27712775000FE816 /* VerifyLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904944BA27712775000FE816 /* VerifyLocationView.swift */; };
-		904944BF277127C3000FE816 /* LocationManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904944BE277127C3000FE816 /* LocationManger.swift */; };
 		904944C12771406E000FE816 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904944C02771406E000FE816 /* LoginView.swift */; };
 		9079E28227860B040058CDAF /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9079E28127860B040058CDAF /* HomeView.swift */; };
-		9079E2842786418C0058CDAF /* Intro1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9079E2832786418C0058CDAF /* Intro1.swift */; };
+		9079E2842786418C0058CDAF /* IntroView1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9079E2832786418C0058CDAF /* IntroView1.swift */; };
+		9079E2862786461A0058CDAF /* IntroView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9079E2852786461A0058CDAF /* IntroView2.swift */; };
+		9079E288278646230058CDAF /* IntroView3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9079E287278646230058CDAF /* IntroView3.swift */; };
+		9079E28A278647870058CDAF /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9079E289278647870058CDAF /* LocationManager.swift */; };
 		907EB5E3278516CA00AFEA2B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 907EB5E2278516CA00AFEA2B /* GoogleService-Info.plist */; };
 		9082F1412784F62E0057AAC7 /* OutOfBoundsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9082F1402784F62E0057AAC7 /* OutOfBoundsView.swift */; };
 		9082F147278500980057AAC7 /* ButtonModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9082F146278500980057AAC7 /* ButtonModifiers.swift */; };
@@ -38,10 +40,12 @@
 		901EF3CF27853C1F00EAC7C6 /* MessagingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagingView.swift; sourceTree = "<group>"; };
 		904944B8277125D0000FE816 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		904944BA27712775000FE816 /* VerifyLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyLocationView.swift; sourceTree = "<group>"; };
-		904944BE277127C3000FE816 /* LocationManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManger.swift; sourceTree = "<group>"; };
 		904944C02771406E000FE816 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		9079E28127860B040058CDAF /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		9079E2832786418C0058CDAF /* Intro1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Intro1.swift; sourceTree = "<group>"; };
+		9079E2832786418C0058CDAF /* IntroView1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroView1.swift; sourceTree = "<group>"; };
+		9079E2852786461A0058CDAF /* IntroView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroView2.swift; sourceTree = "<group>"; };
+		9079E287278646230058CDAF /* IntroView3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroView3.swift; sourceTree = "<group>"; };
+		9079E289278647870058CDAF /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		907EB5E2278516CA00AFEA2B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9082F1402784F62E0057AAC7 /* OutOfBoundsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutOfBoundsView.swift; sourceTree = "<group>"; };
 		9082F146278500980057AAC7 /* ButtonModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonModifiers.swift; sourceTree = "<group>"; };
@@ -127,7 +131,9 @@
 				9082F1402784F62E0057AAC7 /* OutOfBoundsView.swift */,
 				901EF3CF27853C1F00EAC7C6 /* MessagingView.swift */,
 				9079E28127860B040058CDAF /* HomeView.swift */,
-				9079E2832786418C0058CDAF /* Intro1.swift */,
+				9079E2832786418C0058CDAF /* IntroView1.swift */,
+				9079E2852786461A0058CDAF /* IntroView2.swift */,
+				9079E287278646230058CDAF /* IntroView3.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -135,7 +141,7 @@
 		904944BD277127B3000FE816 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				904944BE277127C3000FE816 /* LocationManger.swift */,
+				9079E289278647870058CDAF /* LocationManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -291,16 +297,18 @@
 			files = (
 				904944C12771406E000FE816 /* LoginView.swift in Sources */,
 				901C27582770FBC30043CFFE /* ContentView.swift in Sources */,
+				9079E28A278647870058CDAF /* LocationManager.swift in Sources */,
 				901C27562770FBC30043CFFE /* BigRedTalksApp.swift in Sources */,
 				904944BB27712775000FE816 /* VerifyLocationView.swift in Sources */,
 				9082F1412784F62E0057AAC7 /* OutOfBoundsView.swift in Sources */,
 				901978A6278532A200310D01 /* AuthenticationViewModel.swift in Sources */,
 				9082F147278500980057AAC7 /* ButtonModifiers.swift in Sources */,
 				901EF3D027853C1F00EAC7C6 /* MessagingView.swift in Sources */,
+				9079E2862786461A0058CDAF /* IntroView2.swift in Sources */,
 				9079E28227860B040058CDAF /* HomeView.swift in Sources */,
 				904944B9277125D0000FE816 /* LoadingView.swift in Sources */,
-				904944BF277127C3000FE816 /* LocationManger.swift in Sources */,
-				9079E2842786418C0058CDAF /* Intro1.swift in Sources */,
+				9079E288278646230058CDAF /* IntroView3.swift in Sources */,
+				9079E2842786418C0058CDAF /* IntroView1.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
