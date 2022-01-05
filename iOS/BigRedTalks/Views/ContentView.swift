@@ -13,15 +13,16 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
+            
             if let location = locationManager.location {
-                if (42.434270 < location.latitude && 42.459245 > location.latitude && -76.496569 < location.longitude && -76.469553 > location.longitude) {
+//                if (42.434270 < location.latitude && 42.459245 > location.latitude && -76.496569 < location.longitude && -76.469553 > location.longitude) {
                     switch authModel.state {
-                    case .signedIn: Text("INSERT MESSAGING SCREEN")
+                    case .signedIn: MessagingView()
                     case .signedOut: LoginView()
                     }
-                } else {
-                    OutOfBoundsView()
-                }
+//                } else {
+//                    OutOfBoundsView()
+//                }
             } else {
                 WelcomeView()
                     .environmentObject(locationManager)

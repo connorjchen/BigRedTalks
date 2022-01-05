@@ -34,7 +34,7 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
             case .restricted:
                 locationError = "Your location is rectricted likely due to parental controls"
             case .denied:
-                locationError = "You have denied this app location permission. Go into settings to change it"
+                locationError = "You have denied this app location permission"
             case .authorizedAlways, .authorizedWhenInUse:
                 location = locationManager.location!.coordinate
             @unknown default:

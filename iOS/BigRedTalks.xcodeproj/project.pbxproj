@@ -12,6 +12,7 @@
 		901C27582770FBC30043CFFE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901C27572770FBC30043CFFE /* ContentView.swift */; };
 		901C275A2770FBC60043CFFE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 901C27592770FBC60043CFFE /* Assets.xcassets */; };
 		901C275D2770FBC60043CFFE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 901C275C2770FBC60043CFFE /* Preview Assets.xcassets */; };
+		901EF3D027853C1F00EAC7C6 /* MessagingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901EF3CF27853C1F00EAC7C6 /* MessagingView.swift */; };
 		904944B9277125D0000FE816 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904944B8277125D0000FE816 /* LoadingView.swift */; };
 		904944BB27712775000FE816 /* VerifyLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904944BA27712775000FE816 /* VerifyLocationView.swift */; };
 		904944BF277127C3000FE816 /* LocationManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904944BE277127C3000FE816 /* LocationManger.swift */; };
@@ -33,6 +34,7 @@
 		901C27572770FBC30043CFFE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		901C27592770FBC60043CFFE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		901C275C2770FBC60043CFFE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		901EF3CF27853C1F00EAC7C6 /* MessagingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagingView.swift; sourceTree = "<group>"; };
 		904944B8277125D0000FE816 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		904944BA27712775000FE816 /* VerifyLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyLocationView.swift; sourceTree = "<group>"; };
 		904944BE277127C3000FE816 /* LocationManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManger.swift; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 				904944C02771406E000FE816 /* LoginView.swift */,
 				9082F1402784F62E0057AAC7 /* OutOfBoundsView.swift */,
 				9082F1422784FD430057AAC7 /* WelcomeView.swift */,
+				901EF3CF27853C1F00EAC7C6 /* MessagingView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -291,6 +294,7 @@
 				9082F1412784F62E0057AAC7 /* OutOfBoundsView.swift in Sources */,
 				901978A6278532A200310D01 /* AuthenticationViewModel.swift in Sources */,
 				9082F147278500980057AAC7 /* ButtonModifiers.swift in Sources */,
+				901EF3D027853C1F00EAC7C6 /* MessagingView.swift in Sources */,
 				904944B9277125D0000FE816 /* LoadingView.swift in Sources */,
 				904944BF277127C3000FE816 /* LocationManger.swift in Sources */,
 			);
