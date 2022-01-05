@@ -12,15 +12,17 @@ import GoogleSignIn
 @main
 struct BigRedTalksApp: App {
     
+    @StateObject var locationManager = LocationManager()
     @StateObject var authModel = AuthenticationViewModel()
 
-      init() {
+    init() {
         setupAuthentication()
       }
     
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(locationManager)
                 .environmentObject(authModel)
         }
     }

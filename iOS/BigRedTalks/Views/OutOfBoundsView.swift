@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct OutOfBoundsView: View {
-    @StateObject var locationManager = LocationManager()
     
     var body: some View {
         Text("Error: Outside of Cornell Campus!")

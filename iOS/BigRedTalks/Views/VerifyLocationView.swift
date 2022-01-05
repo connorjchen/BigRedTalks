@@ -35,7 +35,6 @@ struct VerifyLocationView: View {
                 .multilineTextAlignment(.center)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .navigationBarBackButtonHidden(true)
     }
 }
 

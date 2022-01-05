@@ -10,18 +10,16 @@ import GoogleSignIn
 
 struct MessagingView: View {
     @EnvironmentObject var authModel: AuthenticationViewModel
-    private let user = GIDSignIn.sharedInstance().currentUser
+    private let user = GIDSignIn.sharedInstance().currentUser!
     
     var body: some View {
-        if let user = user {
-            let emailAddress = user.profile?.email
-            let fullName = user.profile?.name
-            let givenName = user.profile?.givenName
-            let familyName = user.profile?.familyName
-//                let profilePicUrl = user.profile?.imageURL(withDimension: 320)
-            
-            Text("\(emailAddress ?? "e") \(fullName ?? "f") \(givenName ?? "g") \(familyName ?? "f")")
-        }
+        let emailAddress = user.profile.email
+        let fullName = user.profile.name
+        let givenName = user.profile.givenName
+        let familyName = user.profile.familyName
+        let profilePicUrl = user.profile.imageURL(withDimension: 320)
+        
+        Text("\(emailAddress ?? "|") \(fullName ?? "|") \(givenName ?? "|") \(familyName ?? "|")")
     }
 }
 
