@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		901978A6278532A200310D01 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901978A5278532A200310D01 /* AuthenticationViewModel.swift */; };
 		901C27562770FBC30043CFFE /* BigRedTalksApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901C27552770FBC30043CFFE /* BigRedTalksApp.swift */; };
 		901C27582770FBC30043CFFE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901C27572770FBC30043CFFE /* ContentView.swift */; };
 		901C275A2770FBC60043CFFE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 901C27592770FBC60043CFFE /* Assets.xcassets */; };
@@ -15,6 +16,7 @@
 		904944BB27712775000FE816 /* VerifyLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904944BA27712775000FE816 /* VerifyLocationView.swift */; };
 		904944BF277127C3000FE816 /* LocationManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904944BE277127C3000FE816 /* LocationManger.swift */; };
 		904944C12771406E000FE816 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904944C02771406E000FE816 /* LoginView.swift */; };
+		907EB5E3278516CA00AFEA2B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 907EB5E2278516CA00AFEA2B /* GoogleService-Info.plist */; };
 		9082F1412784F62E0057AAC7 /* OutOfBoundsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9082F1402784F62E0057AAC7 /* OutOfBoundsView.swift */; };
 		9082F1432784FD430057AAC7 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9082F1422784FD430057AAC7 /* WelcomeView.swift */; };
 		9082F147278500980057AAC7 /* ButtonModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9082F146278500980057AAC7 /* ButtonModifiers.swift */; };
@@ -25,6 +27,7 @@
 		0DA05D5882A23CDC8A82FCF9 /* Pods-BigRedTalks.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BigRedTalks.release.xcconfig"; path = "Target Support Files/Pods-BigRedTalks/Pods-BigRedTalks.release.xcconfig"; sourceTree = "<group>"; };
 		29E529B4B8A7189A6DA540E9 /* Pods_BigRedTalks.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BigRedTalks.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FE0BABE80C631ED0AC299F4 /* Pods-BigRedTalks.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BigRedTalks.debug.xcconfig"; path = "Target Support Files/Pods-BigRedTalks/Pods-BigRedTalks.debug.xcconfig"; sourceTree = "<group>"; };
+		901978A5278532A200310D01 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 		901C27522770FBC30043CFFE /* BigRedTalks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BigRedTalks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		901C27552770FBC30043CFFE /* BigRedTalksApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigRedTalksApp.swift; sourceTree = "<group>"; };
 		901C27572770FBC30043CFFE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -34,6 +37,7 @@
 		904944BA27712775000FE816 /* VerifyLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyLocationView.swift; sourceTree = "<group>"; };
 		904944BE277127C3000FE816 /* LocationManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManger.swift; sourceTree = "<group>"; };
 		904944C02771406E000FE816 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		907EB5E2278516CA00AFEA2B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9082F1402784F62E0057AAC7 /* OutOfBoundsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutOfBoundsView.swift; sourceTree = "<group>"; };
 		9082F1422784FD430057AAC7 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		9082F146278500980057AAC7 /* ButtonModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonModifiers.swift; sourceTree = "<group>"; };
@@ -57,8 +61,15 @@
 				7FE0BABE80C631ED0AC299F4 /* Pods-BigRedTalks.debug.xcconfig */,
 				0DA05D5882A23CDC8A82FCF9 /* Pods-BigRedTalks.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		901978A42785327700310D01 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				901978A5278532A200310D01 /* AuthenticationViewModel.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		901C27492770FBC30043CFFE = {
@@ -82,6 +93,8 @@
 		901C27542770FBC30043CFFE /* BigRedTalks */ = {
 			isa = PBXGroup;
 			children = (
+				901978A42785327700310D01 /* Services */,
+				907EB5E2278516CA00AFEA2B /* GoogleService-Info.plist */,
 				9082F145278500760057AAC7 /* Utilities */,
 				904944BD277127B3000FE816 /* Managers */,
 				903DBD5E2771239600BB2B02 /* Views */,
@@ -149,6 +162,7 @@
 				901C274F2770FBC30043CFFE /* Frameworks */,
 				901C27502770FBC30043CFFE /* Resources */,
 				FC073F4CA84E750EFBB98B58 /* [CP] Embed Pods Frameworks */,
+				8807DAA1BE631C0B388F090F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -199,12 +213,30 @@
 			files = (
 				901C275D2770FBC60043CFFE /* Preview Assets.xcassets in Resources */,
 				901C275A2770FBC60043CFFE /* Assets.xcassets in Resources */,
+				907EB5E3278516CA00AFEA2B /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		8807DAA1BE631C0B388F090F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BigRedTalks/Pods-BigRedTalks-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BigRedTalks/Pods-BigRedTalks-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BigRedTalks/Pods-BigRedTalks-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		983ABA119E9750E7A4CEB2C4 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -257,6 +289,7 @@
 				9082F1432784FD430057AAC7 /* WelcomeView.swift in Sources */,
 				904944BB27712775000FE816 /* VerifyLocationView.swift in Sources */,
 				9082F1412784F62E0057AAC7 /* OutOfBoundsView.swift in Sources */,
+				901978A6278532A200310D01 /* AuthenticationViewModel.swift in Sources */,
 				9082F147278500980057AAC7 /* ButtonModifiers.swift in Sources */,
 				904944B9277125D0000FE816 /* LoadingView.swift in Sources */,
 				904944BF277127C3000FE816 /* LocationManger.swift in Sources */,
@@ -394,6 +427,7 @@
 				DEVELOPMENT_TEAM = 627DJ92YM8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BigRedTalks/Info.plist;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This app needs your location to verify you are by the Cornell Campus.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -425,6 +459,7 @@
 				DEVELOPMENT_TEAM = 627DJ92YM8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BigRedTalks/Info.plist;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This app needs your location to verify you are by the Cornell Campus.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

@@ -8,26 +8,51 @@
 import SwiftUI
 
 struct LoginView: View {
-    
-    var body: some View {
-        VStack {
-            VStack(spacing: 20) {
-                Text("Big Red Talks")
-                    .bold().font(.title)
-                
-                //insert button to direct to google login
-                //likely will need a loginManager file (can prob look up how to do google login^)
-            }
-            .multilineTextAlignment(.center)
-            .padding()
-            
-        }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
+
+  // 1
+  @EnvironmentObject var authModel: AuthenticationViewModel
+
+  var body: some View {
+    VStack {
+      Spacer()
+
+      Text("Welcome to Big Red Talks!")
+        .fontWeight(.black)
+        .foregroundColor(Color(.systemIndigo))
+        .font(.largeTitle)
+        .multilineTextAlignment(.center)
+
+      Text("Bing Bong")
+        .fontWeight(.light)
+        .multilineTextAlignment(.center)
+        .padding()
+
+      Spacer()
+
+      // 3
+      Button("Sign in with Google") {
+          authModel.signIn()
+      }
+      .buttonStyle(AuthenticationButtonStyle())
     }
+  }
+}
+
+// 4
+struct AuthenticationButtonStyle: ButtonStyle {
+  func makeBody(configuration: Self.Configuration) -> some View {
+    configuration.label
+      .foregroundColor(.white)
+      .padding()
+      .frame(maxWidth: .infinity)
+      .background(Color(.systemIndigo))
+      .cornerRadius(12)
+      .padding()
+  }
 }
 
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginView()
+        LoginView().environmentObject(AuthenticationViewModel())
     }
 }
