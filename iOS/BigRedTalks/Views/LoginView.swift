@@ -61,6 +61,9 @@ struct LoginView: View {
                         .frame(width: 250, height: 50)
                         .overlay(Capsule().stroke(LinearGradient(gradient: Gradient(colors: [purple, blue, lightBlue]), startPoint: .leading, endPoint: .trailing), lineWidth: 4))
                 }
+                
+                Text("\(authModel.emailDomainAlert)")
+                    .foregroundColor(.red)
 
 
                 Spacer()

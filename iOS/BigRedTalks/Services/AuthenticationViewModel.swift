@@ -20,6 +20,7 @@ class AuthenticationViewModel: NSObject, ObservableObject {
     // 2
     @Published var state: SignInState = .signedOut
     @Published var isNewUser: Bool = false
+    @Published var emailDomainAlert: String = ""
     
     // 3
     override init() {
@@ -60,7 +61,20 @@ extension AuthenticationViewModel: GIDSignInDelegate {
     // 1
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         if error == nil {
-            firebaseAuthentication(withUser: user)
+            
+            let email: String = user!.profile.email
+            let emailArr = email.components(separatedBy: "@")
+            let netID: String = emailArr[0]
+            let domain: String = emailArr[1]
+            print("\(netID) \(domain)")
+            
+            if (domain == "cornell.edu"){
+                firebaseAuthentication(withUser: user)
+                emailDomainAlert = ""
+            } else {
+                emailDomainAlert = "Please use a cornell.edu email"
+                GIDSignIn.sharedInstance().signOut()
+            }
         } else {
             print(error.debugDescription)
         }
