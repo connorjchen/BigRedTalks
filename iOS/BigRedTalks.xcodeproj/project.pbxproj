@@ -21,9 +21,9 @@
 		9079E2862786461A0058CDAF /* IntroView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9079E2852786461A0058CDAF /* IntroView2.swift */; };
 		9079E288278646230058CDAF /* IntroView3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9079E287278646230058CDAF /* IntroView3.swift */; };
 		9079E28A278647870058CDAF /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9079E289278647870058CDAF /* LocationManager.swift */; };
+		9079E28C278679890058CDAF /* PremadeButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9079E28B278679890058CDAF /* PremadeButtons.swift */; };
 		907EB5E3278516CA00AFEA2B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 907EB5E2278516CA00AFEA2B /* GoogleService-Info.plist */; };
 		9082F1412784F62E0057AAC7 /* OutOfBoundsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9082F1402784F62E0057AAC7 /* OutOfBoundsView.swift */; };
-		9082F147278500980057AAC7 /* ButtonModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9082F146278500980057AAC7 /* ButtonModifiers.swift */; };
 		E41CF8506E93A187D32834E8 /* Pods_BigRedTalks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29E529B4B8A7189A6DA540E9 /* Pods_BigRedTalks.framework */; };
 /* End PBXBuildFile section */
 
@@ -46,9 +46,9 @@
 		9079E2852786461A0058CDAF /* IntroView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroView2.swift; sourceTree = "<group>"; };
 		9079E287278646230058CDAF /* IntroView3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroView3.swift; sourceTree = "<group>"; };
 		9079E289278647870058CDAF /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		9079E28B278679890058CDAF /* PremadeButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremadeButtons.swift; sourceTree = "<group>"; };
 		907EB5E2278516CA00AFEA2B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9082F1402784F62E0057AAC7 /* OutOfBoundsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutOfBoundsView.swift; sourceTree = "<group>"; };
-		9082F146278500980057AAC7 /* ButtonModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonModifiers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,7 +149,7 @@
 		9082F145278500760057AAC7 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				9082F146278500980057AAC7 /* ButtonModifiers.swift */,
+				9079E28B278679890058CDAF /* PremadeButtons.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -296,13 +296,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				904944C12771406E000FE816 /* LoginView.swift in Sources */,
+				9079E28C278679890058CDAF /* PremadeButtons.swift in Sources */,
 				901C27582770FBC30043CFFE /* ContentView.swift in Sources */,
 				9079E28A278647870058CDAF /* LocationManager.swift in Sources */,
 				901C27562770FBC30043CFFE /* BigRedTalksApp.swift in Sources */,
 				904944BB27712775000FE816 /* VerifyLocationView.swift in Sources */,
 				9082F1412784F62E0057AAC7 /* OutOfBoundsView.swift in Sources */,
 				901978A6278532A200310D01 /* AuthenticationViewModel.swift in Sources */,
-				9082F147278500980057AAC7 /* ButtonModifiers.swift in Sources */,
 				901EF3D027853C1F00EAC7C6 /* MessagingView.swift in Sources */,
 				9079E2862786461A0058CDAF /* IntroView2.swift in Sources */,
 				9079E28227860B040058CDAF /* HomeView.swift in Sources */,

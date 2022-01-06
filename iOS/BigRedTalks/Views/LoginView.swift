@@ -8,51 +8,74 @@
 import SwiftUI
 
 struct LoginView: View {
+    
+    @EnvironmentObject var authModel: AuthenticationViewModel
+    private let purple = Color(hue: 0.63, saturation: 1.0, brightness: 1.0)
+    private let blue = Color(hue: 0.584, saturation: 1.0, brightness: 1.0)
+    private let lightBlue = Color(hue: 0.508, saturation: 0.5, brightness: 1.0)
+    
+    var body: some View {
+        ZStack {
+            
+            Group {
+                Circle()
+                    .fill(LinearGradient(gradient: Gradient(colors: [purple, blue, lightBlue]), startPoint: .top, endPoint: .bottom))
+                    .frame(width: 200, height: 200)
+                    .position(x: 10, y: -40)
+                
+                ZStack {
+                    Circle()
+                        .fill(LinearGradient(gradient: Gradient(colors: [purple, blue, lightBlue]), startPoint: .top, endPoint: .bottom))
+                        .frame(width: 200, height: 200)
+                        .position(x: 400, y: 200)
+                    
+                    Circle()
+                        .fill(LinearGradient(gradient: Gradient(colors: [purple, blue, lightBlue]), startPoint: .top, endPoint: .bottom))
+                        .frame(width: 100, height: 100)
+                        .position(x: 400, y: 100)
+                }
 
-  // 1
-  @EnvironmentObject var authModel: AuthenticationViewModel
+                Circle()
+                    .fill(LinearGradient(gradient: Gradient(colors: [purple, blue, lightBlue]), startPoint: .top, endPoint: .bottom))
+                    .frame(width: 150, height: 150)
+                    .position(x: -10, y: 750)
+            }
+            
+            VStack {
+                Spacer()
 
-  var body: some View {
-    VStack {
-      Spacer()
+                Spacer()
 
-      Text("Welcome to Big Red Talks!")
-        .fontWeight(.black)
-        .foregroundColor(Color(.systemIndigo))
-        .font(.largeTitle)
-        .multilineTextAlignment(.center)
+                LinearGradient(gradient: Gradient(colors: [purple, blue, lightBlue]), startPoint: .top, endPoint: .bottom)
+                    .frame(width: 300, height: 300, alignment: .center)
+                    .mask(
+                        Text("Big Red\nTalks")
+                            .font(.system(size: 80))
+                    )
 
-      Text("Bing Bong")
-        .fontWeight(.light)
-        .multilineTextAlignment(.center)
-        .padding()
+                Button {
+                    authModel.signIn()
+                } label: {
+                    Text("Sign in with Google")
+                        .bold()
+                        .frame(width: 250, height: 50)
+                        .overlay(Capsule().stroke(LinearGradient(gradient: Gradient(colors: [purple, blue, lightBlue]), startPoint: .leading, endPoint: .trailing), lineWidth: 4))
+                }
 
-      Spacer()
 
-      // 3
-      Button("Sign in with Google") {
-          authModel.signIn()
-      }
-      .buttonStyle(AuthenticationButtonStyle())
+                Spacer()
+            }
+        }
+//        .background(Color(hue: 0.668, saturation: 1.0, brightness: 1.0))
     }
-  }
 }
 
-// 4
-struct AuthenticationButtonStyle: ButtonStyle {
-  func makeBody(configuration: Self.Configuration) -> some View {
-    configuration.label
-      .foregroundColor(.white)
-      .padding()
-      .frame(maxWidth: .infinity)
-      .background(Color(.systemIndigo))
-      .cornerRadius(12)
-      .padding()
-  }
-}
 
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginView().environmentObject(AuthenticationViewModel())
+        Group {
+            LoginView().environmentObject(AuthenticationViewModel())
+            //.previewDevice(PreviewDevice(rawValue: "iPhone 8"))
+        }
     }
 }
