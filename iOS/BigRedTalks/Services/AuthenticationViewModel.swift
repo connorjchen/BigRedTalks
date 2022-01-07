@@ -20,7 +20,7 @@ class AuthenticationViewModel: NSObject, ObservableObject {
     // 2
     @Published var state: SignInState = .signedOut
     @Published var isNewUser: Bool = false
-    @Published var emailDomainAlert: String = ""
+    @Published var emailDomainAlert: String = " \n "
     
     // 3
     override init() {
@@ -70,9 +70,9 @@ extension AuthenticationViewModel: GIDSignInDelegate {
             
             if (domain == "cornell.edu"){
                 firebaseAuthentication(withUser: user)
-                emailDomainAlert = ""
+                emailDomainAlert = " \n "
             } else {
-                emailDomainAlert = "Please use a cornell.edu email"
+                emailDomainAlert = "Please use a cornell.edu email\n "
                 GIDSignIn.sharedInstance().signOut()
             }
         } else {

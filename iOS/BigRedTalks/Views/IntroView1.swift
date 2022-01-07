@@ -33,7 +33,6 @@ struct IntroView1: View {
             
             VStack {
                 Spacer()
-                    .frame(height: 158)
                 
                 Image("phone")
                     .renderingMode(.original)
@@ -65,6 +64,7 @@ struct IntroView1: View {
                 }
                 
                 Spacer()
+                    .frame(height: 190)
                 
                 HStack {
                     Circle()

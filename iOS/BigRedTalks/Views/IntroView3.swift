@@ -33,7 +33,6 @@ struct IntroView3: View {
             
             VStack {
                 Spacer()
-                    .frame(height: 140)
                 
                 LinearGradient(gradient: Gradient(colors: [Color("darkBlue"), Color("lightBlue")]), startPoint: .top, endPoint: .bottom)
                     .frame(width: 300, height: 100, alignment: .center)
@@ -63,6 +62,7 @@ struct IntroView3: View {
                 }
                 
                 Spacer()
+                    .frame(height: 190)
                 
                 HStack {
                     Circle()
@@ -76,7 +76,6 @@ struct IntroView3: View {
                         .frame(width: 15, height: 15)
                 }
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
     }
 }

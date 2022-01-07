@@ -58,11 +58,12 @@ struct LoginView: View {
                         .overlay(Capsule().stroke(LinearGradient(gradient: Gradient(colors: [Color("darkBlue"), Color("lightBlue")]), startPoint: .leading, endPoint: .trailing), lineWidth: 4))
                 }
                 
-                Text("\(authModel.emailDomainAlert) ")
+                Text("\(authModel.emailDomainAlert)")
                     .foregroundColor(.red)
 
 
                 Spacer()
+                    .frame(height: 150)
             }
         }
     }

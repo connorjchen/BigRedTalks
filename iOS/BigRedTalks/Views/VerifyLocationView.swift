@@ -66,11 +66,13 @@ struct VerifyLocationView: View {
                         .overlay(Capsule().stroke(LinearGradient(gradient: Gradient(colors: [Color("darkBlue"), Color("lightBlue")]), startPoint: .leading, endPoint: .trailing), lineWidth: 4))
                 }
                 
-                Text("\(locationManager.locationError) ")
+                Text("\(locationManager.locationError)")
                     .foregroundColor(.red)
+                    .multilineTextAlignment(.center)
 
 
                 Spacer()
+                    .frame(height: 150)
             }
         }
     }

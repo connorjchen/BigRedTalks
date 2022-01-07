@@ -33,7 +33,6 @@ struct IntroView2: View {
             
             VStack {
                 Spacer()
-                    .frame(height: 181)
                 
                 HStack {
                     Image("walking")
@@ -80,6 +79,7 @@ struct IntroView2: View {
                 }
                 
                 Spacer()
+                    .frame(height: 190)
                 
                 HStack {
                     Circle()
