@@ -16,47 +16,46 @@ struct LoginView: View {
             
             Group {
                 Circle()
-                    .fill(LinearGradient(gradient: Gradient(colors: [Color("customPurple"), Color("customBlue"), Color("customLightBlue")]), startPoint: .top, endPoint: .bottom))
+                    .fill(LinearGradient(gradient: Gradient(colors: [Color("darkBlue"), Color("lightBlue")]), startPoint: .top, endPoint: .bottom))
                     .frame(width: 200, height: 200)
                     .position(x: 10, y: -40)
                 
                 ZStack {
                     Circle()
-                        .fill(LinearGradient(gradient: Gradient(colors: [Color("customPurple"), Color("customBlue"), Color("customLightBlue")]), startPoint: .top, endPoint: .bottom))
+                        .fill(LinearGradient(gradient: Gradient(colors: [Color("darkBlue"), Color("lightBlue")]), startPoint: .top, endPoint: .bottom))
                         .frame(width: 200, height: 200)
-                        .position(x: 400, y: 200)
+                        .position(x: 380, y: 200)
                     
                     Circle()
-                        .fill(LinearGradient(gradient: Gradient(colors: [Color("customPurple"), Color("customBlue"), Color("customLightBlue")]), startPoint: .top, endPoint: .bottom))
+                        .fill(LinearGradient(gradient: Gradient(colors: [Color("darkBlue"), Color("lightBlue")]), startPoint: .top, endPoint: .bottom))
                         .frame(width: 100, height: 100)
                         .position(x: 400, y: 100)
                 }
 
                 Circle()
-                    .fill(LinearGradient(gradient: Gradient(colors: [Color("customPurple"), Color("customBlue"), Color("customLightBlue")]), startPoint: .top, endPoint: .bottom))
+                    .fill(LinearGradient(gradient: Gradient(colors: [Color("darkBlue"), Color("lightBlue")]), startPoint: .top, endPoint: .bottom))
                     .frame(width: 150, height: 150)
-                    .position(x: -10, y: 750)
+                    .position(x: -10, y: 700)
             }
             
             VStack {
                 Spacer()
 
-                Spacer()
-
-                LinearGradient(gradient: Gradient(colors: [Color("customPurple"), Color("customBlue"), Color("customLightBlue")]), startPoint: .top, endPoint: .bottom)
+                LinearGradient(gradient: Gradient(colors: [Color("darkBlue"), Color("lightBlue")]), startPoint: .top, endPoint: .bottom)
                     .frame(width: 300, height: 300, alignment: .center)
                     .mask(
                         Text("Big Red\nTalks")
                             .font(.system(size: 80))
                     )
+                    .padding(.top, 100)
 
                 Button {
                     authModel.signIn()
                 } label: {
-                    Text("Sign in with Cornell Email")
+                    Text("Sign in with Cornell email")
                         .bold()
                         .frame(width: 250, height: 50)
-                        .overlay(Capsule().stroke(LinearGradient(gradient: Gradient(colors: [Color("customPurple"), Color("customBlue"), Color("customLightBlue")]), startPoint: .leading, endPoint: .trailing), lineWidth: 4))
+                        .overlay(Capsule().stroke(LinearGradient(gradient: Gradient(colors: [Color("darkBlue"), Color("lightBlue")]), startPoint: .leading, endPoint: .trailing), lineWidth: 4))
                 }
                 
                 Text("\(authModel.emailDomainAlert) ")

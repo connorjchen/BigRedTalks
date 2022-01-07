@@ -19,11 +19,12 @@ struct ContentView: View {
             case .signedOut: LoginView()
             }
         }
+        .background(Color("backgroundBlue"))
         .preferredColorScheme(.light)
         
         .onAppear {
             locationManager.checkIfLocationServicesIsEnabled()
-            GIDSignIn.sharedInstance().restorePreviousSignIn()
+//            GIDSignIn.sharedInstance().restorePreviousSignIn()
         }
     }
 }

@@ -16,36 +16,42 @@ struct IntroView3: View {
             
             Group {
                 Circle()
-                    .fill(LinearGradient(gradient: Gradient(colors: [Color("customPurple"), Color("customBlue"), Color("customLightBlue")]), startPoint: .top, endPoint: .bottom))
+                    .stroke(LinearGradient(gradient: Gradient(colors: [Color("darkBlue"), Color("lightBlue")]), startPoint: .top, endPoint: .bottom), lineWidth: 10)
                     .frame(width: 200, height: 200)
                     .position(x: 10, y: -40)
                 
-                ZStack {
-                    Circle()
-                        .fill(LinearGradient(gradient: Gradient(colors: [Color("customPurple"), Color("customBlue"), Color("customLightBlue")]), startPoint: .top, endPoint: .bottom))
-                        .frame(width: 200, height: 200)
-                        .position(x: 400, y: 200)
-                    
-                    Circle()
-                        .fill(LinearGradient(gradient: Gradient(colors: [Color("customPurple"), Color("customBlue"), Color("customLightBlue")]), startPoint: .top, endPoint: .bottom))
-                        .frame(width: 100, height: 100)
-                        .position(x: 400, y: 100)
-                }
-
                 Circle()
-                    .fill(LinearGradient(gradient: Gradient(colors: [Color("customPurple"), Color("customBlue"), Color("customLightBlue")]), startPoint: .top, endPoint: .bottom))
+                    .fill(LinearGradient(gradient: Gradient(colors: [Color("darkBlue"), Color("lightBlue")]), startPoint: .top, endPoint: .bottom))
                     .frame(width: 150, height: 150)
-                    .position(x: -10, y: 750)
+                    .position(x: -10, y: 50)
+                    
+                Circle()
+                    .fill(LinearGradient(gradient: Gradient(colors: [Color("darkBlue"), Color("lightBlue")]), startPoint: .top, endPoint: .bottom))
+                    .frame(width: 100, height: 100)
+                    .position(x: 380, y: 710)
             }
             
             VStack {
-                Text("Profile")
-                    .bold()
-                    .font(.title)
+                Spacer()
+                    .frame(height: 140)
+                
+                LinearGradient(gradient: Gradient(colors: [Color("darkBlue"), Color("lightBlue")]), startPoint: .top, endPoint: .bottom)
+                    .frame(width: 300, height: 100, alignment: .center)
+                    .mask(
+                        Text("Your messages,\nyour way")
+                            .font(.system(size: 40))
+                            .multilineTextAlignment(.center)
+                    )
+                
+                Image("messages")
+                    .renderingMode(.original)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                .frame(width: 200, height: 200)
 
-                Text("Users have the ability to change their visible username and their bubble color")
+                Text("Choose the color of your messages for a personalized experience")
                     .multilineTextAlignment(.center)
-                    .padding()
+                    .padding(.bottom, 40)
                 
                 Button {
                     introNum = 4
@@ -53,19 +59,20 @@ struct IntroView3: View {
                     Text("Next")
                         .bold()
                         .frame(width: 250, height: 50)
-                        .overlay(Capsule().stroke(LinearGradient(gradient: Gradient(colors: [Color("customPurple"), Color("customBlue"), Color("customLightBlue")]), startPoint: .leading, endPoint: .trailing), lineWidth: 4))
+                        .overlay(Capsule().stroke(LinearGradient(gradient: Gradient(colors: [Color("darkBlue"), Color("lightBlue")]), startPoint: .leading, endPoint: .trailing), lineWidth: 4))
                 }
-                .padding()
+                
+                Spacer()
                 
                 HStack {
                     Circle()
-                        .stroke(LinearGradient(gradient: Gradient(colors: [Color("customPurple"), Color("customBlue"), Color("customLightBlue")]), startPoint: .top, endPoint: .bottom), lineWidth: 4)
-                        .frame(width: 11, height: 11)
+                        .fill(Color("circleGray"))
+                        .frame(width: 15, height: 15)
                     Circle()
-                        .stroke(LinearGradient(gradient: Gradient(colors: [Color("customPurple"), Color("customBlue"), Color("customLightBlue")]), startPoint: .top, endPoint: .bottom), lineWidth: 4)
-                        .frame(width: 11, height: 11)
+                        .fill(Color("circleGray"))
+                        .frame(width: 15, height: 15)
                     Circle()
-                        .fill(LinearGradient(gradient: Gradient(colors: [Color("customPurple"), Color("customBlue"), Color("customLightBlue")]), startPoint: .top, endPoint: .bottom))
+                        .fill(Color("circleBlue"))
                         .frame(width: 15, height: 15)
                 }
             }

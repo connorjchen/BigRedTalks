@@ -16,36 +16,59 @@ struct IntroView2: View {
             
             Group {
                 Circle()
-                    .fill(LinearGradient(gradient: Gradient(colors: [Color("customPurple"), Color("customBlue"), Color("customLightBlue")]), startPoint: .top, endPoint: .bottom))
+                    .stroke(LinearGradient(gradient: Gradient(colors: [Color("darkBlue"), Color("lightBlue")]), startPoint: .top, endPoint: .bottom), lineWidth: 10)
                     .frame(width: 200, height: 200)
                     .position(x: 10, y: -40)
                 
-                ZStack {
-                    Circle()
-                        .fill(LinearGradient(gradient: Gradient(colors: [Color("customPurple"), Color("customBlue"), Color("customLightBlue")]), startPoint: .top, endPoint: .bottom))
-                        .frame(width: 200, height: 200)
-                        .position(x: 400, y: 200)
-                    
-                    Circle()
-                        .fill(LinearGradient(gradient: Gradient(colors: [Color("customPurple"), Color("customBlue"), Color("customLightBlue")]), startPoint: .top, endPoint: .bottom))
-                        .frame(width: 100, height: 100)
-                        .position(x: 400, y: 100)
-                }
-
                 Circle()
-                    .fill(LinearGradient(gradient: Gradient(colors: [Color("customPurple"), Color("customBlue"), Color("customLightBlue")]), startPoint: .top, endPoint: .bottom))
+                    .fill(LinearGradient(gradient: Gradient(colors: [Color("darkBlue"), Color("lightBlue")]), startPoint: .top, endPoint: .bottom))
                     .frame(width: 150, height: 150)
-                    .position(x: -10, y: 750)
+                    .position(x: -10, y: 50)
+                    
+                Circle()
+                    .fill(LinearGradient(gradient: Gradient(colors: [Color("darkBlue"), Color("lightBlue")]), startPoint: .top, endPoint: .bottom))
+                    .frame(width: 100, height: 100)
+                    .position(x: 380, y: 710)
             }
             
             VStack {
-                Text("Messaging")
-                    .bold()
-                    .font(.title)
-
-                Text("Users have the ability to send messages and like others' messages")
-                    .multilineTextAlignment(.center)
-                    .padding()
+                Spacer()
+                    .frame(height: 181)
+                
+                HStack {
+                    Image("walking")
+                        .renderingMode(.original)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                    .frame(width: 150, height: 150)
+                    
+                    Group {
+                      Text("Share ")
+                            .foregroundColor(Color("darkBlue"))
+                            .font(.system(size: 20, weight: .semibold)) +
+                      Text("messages\nwith others by\ntyping in the messaging bar")
+                            .font(.system(size: 20))
+                    }
+                    .frame(width: 150, height: 150)
+                }
+                
+                HStack {
+                    Image("heart")
+                        .renderingMode(.original)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                    .frame(width: 150, height: 110)
+                    
+                    Group {
+                      Text("Heart ")
+                            .foregroundColor(Color("darkBlue"))
+                            .font(.system(size: 20, weight: .semibold)) +
+                      Text("messages\nthat you like or\nsupport and see\nwhat messages\nothers like too")
+                            .font(.system(size: 20))
+                    }
+                    .frame(width: 150, height: 150)
+                }
+                .padding(.bottom, 50)
                 
                 Button {
                     introNum = 3
@@ -53,23 +76,23 @@ struct IntroView2: View {
                     Text("Next")
                         .bold()
                         .frame(width: 250, height: 50)
-                        .overlay(Capsule().stroke(LinearGradient(gradient: Gradient(colors: [Color("customPurple"), Color("customBlue"), Color("customLightBlue")]), startPoint: .leading, endPoint: .trailing), lineWidth: 4))
+                        .overlay(Capsule().stroke(LinearGradient(gradient: Gradient(colors: [Color("darkBlue"), Color("lightBlue")]), startPoint: .leading, endPoint: .trailing), lineWidth: 4))
                 }
-                .padding()
+                
+                Spacer()
                 
                 HStack {
                     Circle()
-                        .stroke(LinearGradient(gradient: Gradient(colors: [Color("customPurple"), Color("customBlue"), Color("customLightBlue")]), startPoint: .top, endPoint: .bottom), lineWidth: 4)
-                        .frame(width: 11, height: 11)
-                    Circle()
-                        .fill(LinearGradient(gradient: Gradient(colors: [Color("customPurple"), Color("customBlue"), Color("customLightBlue")]), startPoint: .top, endPoint: .bottom))
+                        .fill(Color("circleGray"))
                         .frame(width: 15, height: 15)
                     Circle()
-                        .stroke(LinearGradient(gradient: Gradient(colors: [Color("customPurple"), Color("customBlue"), Color("customLightBlue")]), startPoint: .top, endPoint: .bottom), lineWidth: 4)
-                        .frame(width: 11, height: 11)
+                        .fill(Color("circleBlue"))
+                        .frame(width: 15, height: 15)
+                    Circle()
+                        .fill(Color("circleGray"))
+                        .frame(width: 15, height: 15)
                 }
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
     }
 }
