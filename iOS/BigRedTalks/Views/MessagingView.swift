@@ -26,9 +26,9 @@ struct MessagingView: View {
                 } label: {
                     Image(systemName: "person.circle.fill")
                         .resizable()
-                        .frame(width: 30, height: 30, alignment: .trailing)
+                        .frame(width: 40, height: 40, alignment: .trailing)
                 }
-                .position(x: 350, y: 10)
+                .position(x: 350, y: 30)
             }
         }
 //        let emailAddress = user?.profile.email

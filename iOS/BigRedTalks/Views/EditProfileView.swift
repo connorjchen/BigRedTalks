@@ -22,8 +22,7 @@ struct EditProfile: View {
             ZStack{
                 VStack {
                     Text("Edit your profile")
-                        .padding(.top, 0.0)
-                        .foregroundStyle(LinearGradient(gradient: Gradient(colors: [Color("customPurple"), Color("customBlue"), Color("customLightBlue")]), startPoint: .top, endPoint: .bottom))
+                        .foregroundStyle(LinearGradient(gradient: Gradient(colors: [Color("darkBlue"), Color("lightBlue")]), startPoint: .top, endPoint: .bottom))
                         .font(.system(size: 40))
                     Text("")
                         .padding(.bottom, 10.0)
@@ -31,23 +30,23 @@ struct EditProfile: View {
                         Text("Change your nickname:")
                             .font(.system(size: 18))
                             .fontWeight(.light)
-                            .padding(.leading, 16.0)
+                            .padding(.leading, 1)
                         
                         TextField("Change nickname...", text: $username)
-                            .frame(width: 280)
+                            .frame(width: 280, height: 25)
                             .font(Font.system(size: 16))
                             .padding()
                             .background(RoundedRectangle(cornerRadius: 16).fill(Color(hue: 0.542, saturation: 0.152, brightness: 0.975)))
                             .foregroundColor(Color(hue: 0.639, saturation: 0.706, brightness: 0.605))
-                            .padding()
+                            .padding(.bottom, 30)
                     }
-                    .padding(.bottom, 30.0)
+
                     
                     VStack(alignment: .leading, spacing: 5) {
                         Text("Choose bubble color:")
                             .font(.system(size: 18))
                             .fontWeight(.light)
-                            .padding([.leading, .bottom], 20)
+                            .padding([.leading], 20)
                             
                         
                         VStack {
@@ -333,7 +332,7 @@ struct EditProfile: View {
                         .background( RoundedRectangle(cornerRadius: 20).fill(Color(hue: 0.542, saturation: 0.152, brightness: 0.975)))
                         .frame(width: 350)
                     }
-                    .padding(.bottom, 15)
+                    .padding(.bottom, 40)
                     
                     Button(action: {
                         self.doneEditing.toggle()
@@ -345,7 +344,7 @@ struct EditProfile: View {
                             .padding()
                             .overlay(
                                 RoundedRectangle(cornerRadius: 20)
-                                    .stroke(LinearGradient(gradient: Gradient(colors: [Color("customPurple"), Color("customBlue"), Color("customLightBlue")]), startPoint: .leading, endPoint: .trailing), lineWidth: 5)
+                                    .stroke(LinearGradient(gradient: Gradient(colors: [Color("darkBlue"), Color("lightBlue")]), startPoint: .leading, endPoint: .trailing), lineWidth: 5)
                                     .frame(width: 280)
                             )
                     }
@@ -361,7 +360,7 @@ struct EditProfile: View {
                             .padding()
                             .overlay(
                                 RoundedRectangle(cornerRadius: 20)
-                                    .stroke(LinearGradient(gradient: Gradient(colors: [Color("customPurple"), Color("customBlue"), Color("customLightBlue")]), startPoint: .leading, endPoint: .trailing), lineWidth: 5)
+                                    .stroke(LinearGradient(gradient: Gradient(colors: [Color("darkBlue"), Color("lightBlue")]), startPoint: .leading, endPoint: .trailing), lineWidth: 5)
                                     .frame(width: 280)
                             )
                     }
