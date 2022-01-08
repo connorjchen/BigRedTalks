@@ -15,10 +15,11 @@ struct ProfileView: View {
     @Binding var username : String
     @Binding var email : String
     @Binding var color : Color
+    @Binding var introNum : Int
     
     var body: some View {
         if editProfile {
-            EditProfile(username: $username, color: $color)
+            EditProfile(username: $username, color: $color, introNum: $introNum)
         } else if home {
             HomeView(username: username, color: color)
         } else{
@@ -102,7 +103,7 @@ struct ProfileView: View {
 
 struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileView(username: .constant("HarryChin"), email: .constant("hc@gmail.com"), color: .constant(.red)).environmentObject(AuthenticationViewModel())
+        ProfileView(username: .constant("HarryChin"), email: .constant("hc@gmail.com"), color: .constant(.red), introNum: .constant(4)).environmentObject(AuthenticationViewModel())
     }
 }
 
