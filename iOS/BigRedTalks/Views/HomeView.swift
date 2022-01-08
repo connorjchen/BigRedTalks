@@ -6,11 +6,16 @@
 //
 
 import SwiftUI
+import GoogleSignIn
 
 struct HomeView: View {
     
     @EnvironmentObject var locationManager: LocationManager
     @EnvironmentObject var authModel: AuthenticationViewModel
+    private let user = GIDSignIn.sharedInstance().currentUser
+    @State var username: String = ""//(user?.profile.name)
+    @State var color: Color = .red
+//    @State var email: String = (user?.profile.email)
     
     @State var introNum = 1
     
@@ -26,10 +31,10 @@ struct HomeView: View {
                     } else if (introNum == 3) {
                         IntroView3(introNum: $introNum)
                     } else if (introNum == 4) {
-                        MessagingView()
+                        MessagingView(username: $username, color: $color)
                     }
                 } else {
-                    MessagingView()
+                    MessagingView(username: $username, color: $color)
                 }
 //            } else {
 //                OutOfBoundsView()
@@ -42,7 +47,7 @@ struct HomeView: View {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView()
+        HomeView(username: "HarrisonChin", color: .red)
             .environmentObject(LocationManager())
             .environmentObject(AuthenticationViewModel())
     }
