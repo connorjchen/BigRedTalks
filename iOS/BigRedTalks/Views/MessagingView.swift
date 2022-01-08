@@ -14,11 +14,12 @@ struct MessagingView: View {
     @State private var viewProfile = false
     @Binding var username: String
     @Binding var color : Color
+    @Binding var introNum : Int
 //    @Binding var email: String
    
     var body: some View {
         if viewProfile {
-            EditProfile(username: $username, color: $color)
+            EditProfile(username: $username, color: $color, introNum: $introNum)
         } else {
             ScrollView{
                 Button {
@@ -47,6 +48,6 @@ struct MessagingView: View {
 
 struct MessagingView_Previews: PreviewProvider {
     static var previews: some View {
-        MessagingView(username: .constant("HarrisonChin"), color: .constant(.red)).environmentObject(AuthenticationViewModel())
+        MessagingView(username: .constant("HarrisonChin"), color: .constant(.red), introNum: .constant(4)).environmentObject(AuthenticationViewModel())
     }
 }

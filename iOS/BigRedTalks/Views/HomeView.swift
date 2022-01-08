@@ -31,10 +31,10 @@ struct HomeView: View {
                     } else if (introNum == 3) {
                         IntroView3(introNum: $introNum)
                     } else if (introNum == 4) {
-                        MessagingView(username: $username, color: $color)
+                        MessagingView(username: $username, color: $color, introNum: $introNum)
                     }
                 } else {
-                    MessagingView(username: $username, color: $color)
+                    MessagingView(username: $username, color: $color, introNum: $introNum)
                 }
 //            } else {
 //                OutOfBoundsView()
