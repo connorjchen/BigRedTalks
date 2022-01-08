@@ -18,7 +18,9 @@ const MessageSchema = mongoose.Schema({
         default: Date.now
     },
     numberLikes: {
-        type: Number,
-        default: 0
+        type: [String],
+        default: []
     }
 });
+
+module.exports = mongoose.model('Messages', MessageSchema);
