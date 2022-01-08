@@ -24,7 +24,7 @@ struct ContentView: View {
         
         .onAppear {
             locationManager.checkIfLocationServicesIsEnabled()
-//            GIDSignIn.sharedInstance().restorePreviousSignIn()
+            GIDSignIn.sharedInstance().restorePreviousSignIn()
         }
     }
 }
