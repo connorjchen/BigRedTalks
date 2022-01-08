@@ -1,0 +1,2 @@
+# Don't expose database connection login
+.env
