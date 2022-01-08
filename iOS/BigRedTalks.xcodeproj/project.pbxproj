@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		713BA87B27877C1600A312FF /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713BA87A27877C1600A312FF /* ProfileView.swift */; };
+		713BA87F2787965C00A312FF /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713BA87E2787965C00A312FF /* EditProfileView.swift */; };
 		901978A6278532A200310D01 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901978A5278532A200310D01 /* AuthenticationViewModel.swift */; };
 		901C27562770FBC30043CFFE /* BigRedTalksApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901C27552770FBC30043CFFE /* BigRedTalksApp.swift */; };
 		901C27582770FBC30043CFFE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901C27572770FBC30043CFFE /* ContentView.swift */; };
@@ -30,6 +32,8 @@
 /* Begin PBXFileReference section */
 		0DA05D5882A23CDC8A82FCF9 /* Pods-BigRedTalks.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BigRedTalks.release.xcconfig"; path = "Target Support Files/Pods-BigRedTalks/Pods-BigRedTalks.release.xcconfig"; sourceTree = "<group>"; };
 		29E529B4B8A7189A6DA540E9 /* Pods_BigRedTalks.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BigRedTalks.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		713BA87A27877C1600A312FF /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		713BA87E2787965C00A312FF /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
 		7FE0BABE80C631ED0AC299F4 /* Pods-BigRedTalks.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BigRedTalks.debug.xcconfig"; path = "Target Support Files/Pods-BigRedTalks/Pods-BigRedTalks.debug.xcconfig"; sourceTree = "<group>"; };
 		901978A5278532A200310D01 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 		901C27522770FBC30043CFFE /* BigRedTalks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BigRedTalks.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -134,6 +138,8 @@
 				9079E2832786418C0058CDAF /* IntroView1.swift */,
 				9079E2852786461A0058CDAF /* IntroView2.swift */,
 				9079E287278646230058CDAF /* IntroView3.swift */,
+				713BA87A27877C1600A312FF /* ProfileView.swift */,
+				713BA87E2787965C00A312FF /* EditProfileView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -298,10 +304,12 @@
 				904944C12771406E000FE816 /* LoginView.swift in Sources */,
 				9079E28C278679890058CDAF /* PremadeButtons.swift in Sources */,
 				901C27582770FBC30043CFFE /* ContentView.swift in Sources */,
+				713BA87F2787965C00A312FF /* EditProfileView.swift in Sources */,
 				9079E28A278647870058CDAF /* LocationManager.swift in Sources */,
 				901C27562770FBC30043CFFE /* BigRedTalksApp.swift in Sources */,
 				904944BB27712775000FE816 /* VerifyLocationView.swift in Sources */,
 				9082F1412784F62E0057AAC7 /* OutOfBoundsView.swift in Sources */,
+				713BA87B27877C1600A312FF /* ProfileView.swift in Sources */,
 				901978A6278532A200310D01 /* AuthenticationViewModel.swift in Sources */,
 				901EF3D027853C1F00EAC7C6 /* MessagingView.swift in Sources */,
 				9079E2862786461A0058CDAF /* IntroView2.swift in Sources */,
@@ -440,7 +448,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BigRedTalks/Preview Content\"";
-				DEVELOPMENT_TEAM = 627DJ92YM8;
+				DEVELOPMENT_TEAM = 74GH3UD64G;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BigRedTalks/Info.plist;
@@ -473,7 +481,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BigRedTalks/Preview Content\"";
-				DEVELOPMENT_TEAM = 627DJ92YM8;
+				DEVELOPMENT_TEAM = 74GH3UD64G;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BigRedTalks/Info.plist;

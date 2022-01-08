@@ -11,25 +11,42 @@ import GoogleSignIn
 struct MessagingView: View {
     @EnvironmentObject var authModel: AuthenticationViewModel
     private let user = GIDSignIn.sharedInstance().currentUser
-    
+    @State private var viewProfile = false
+    @Binding var username: String
+    @Binding var color : Color
+//    @Binding var email: String
+   
     var body: some View {
-        let emailAddress = user?.profile.email
-        let fullName = user?.profile.name
-        let givenName = user?.profile.givenName
-        let familyName = user?.profile.familyName
-        let profilePicUrl = user?.profile.imageURL(withDimension: 320)
-        
-        Text("\(emailAddress ?? "|") \(fullName ?? "|") \(givenName ?? "|") \(familyName ?? "|")")
-        
-        Button("Log out") {
-            authModel.signOut()
+        if viewProfile {
+            EditProfile(username: $username, color: $color)
+        } else {
+            ScrollView{
+                Button {
+                    self.viewProfile.toggle()
+                } label: {
+                    Image(systemName: "person.circle.fill")
+                        .resizable()
+                        .frame(width: 40, height: 40, alignment: .trailing)
+                }
+                .position(x: 350, y: 30)
+            }
         }
-        .buttonStyle(AuthenticationButtonStyle())
+//        let emailAddress = user?.profile.email
+//        let fullName = user?.profile.name
+//        let givenName = user?.profile.givenName
+//        let familyName = user?.profile.familyName
+//
+//        Text("\(emailAddress ?? "|") \(fullName ?? "|") \(givenName ?? "|") \(familyName ?? "|")")
+        
+//        Button("Log out") {
+//            authModel.signOut()
+//        }
+//        .buttonStyle(AuthenticationButtonStyle())
     }
 }
 
 struct MessagingView_Previews: PreviewProvider {
     static var previews: some View {
-        MessagingView().environmentObject(AuthenticationViewModel())
+        MessagingView(username: .constant("HarrisonChin"), color: .constant(.red)).environmentObject(AuthenticationViewModel())
     }
 }
