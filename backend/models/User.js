@@ -7,7 +7,7 @@ const UserSchema = mongoose.Schema({
     },
     username: {
         type: String,
-        default: _id.split('@')[0]
+        required: true
     },
     color: {
         type: String,
@@ -17,10 +17,6 @@ const UserSchema = mongoose.Schema({
         type: Boolean,
         default: false
     }
-});
-
-UserSchema.virtual('email').get(() => {
-    return this._id;
 });
 
 module.exports = mongoose.model('Users', UserSchema);

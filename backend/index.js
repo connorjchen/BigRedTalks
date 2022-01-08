@@ -11,7 +11,7 @@ app.use(express.json());
 const usersRoute = require('./routes/users');
 const msgsRoute = require('./routes/messages');
 
-app.use('/users', usersRoute);
+app.use('/user', usersRoute);
 app.use('/messages', msgsRoute);
 
 
