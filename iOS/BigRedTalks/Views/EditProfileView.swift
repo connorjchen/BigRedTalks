@@ -137,7 +137,7 @@ struct EditProfile: View {
                                 Group{
                                     Spacer()
                                     
-                                    makeButton(buttonColor: Color(hue: 0.843, saturation: 0.404, brightness: 0.974))
+                                    makeButton(buttonColor: Color(hue: 0.843, saturation: 0.404, brightness: 0.975))
                                     
                                     Spacer()
                                     
