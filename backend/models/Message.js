@@ -17,7 +17,7 @@ const MessageSchema = mongoose.Schema({
         type: Date,
         default: Date.now
     },
-    numberLikes: {
+    likes: {
         type: [String],
         default: []
     }

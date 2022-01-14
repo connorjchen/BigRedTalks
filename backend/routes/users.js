@@ -28,12 +28,12 @@ router.get('/:email', async (req, res) => {
                 user: newUser,
                 isNew: true
             });
-        }catch(err){
+        } catch(err) {
             res.json({ message: err });
-        }
+        };
     } catch(err) {
         res.json({ message: err });
-    }
+    };
 });
 
 router.patch('/:email', async (req, res) => {
@@ -46,7 +46,7 @@ router.patch('/:email', async (req, res) => {
         res.json(updatedUser);
     } catch(err) {
         res.json({ message: err });
-    }
+    };
 });
 
 
