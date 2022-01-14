@@ -35,7 +35,7 @@ struct EditProfile: View {
     
     var body: some View {
         if doneEditing {
-            MessagingView(username: $username, color: $color, introNum: $introNum)
+            MessagingView(username: $username, color: $color, introNum: $introNum, message: "")
         }
         else {
             ZStack{
