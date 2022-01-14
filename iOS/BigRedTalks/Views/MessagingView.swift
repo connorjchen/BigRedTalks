@@ -10,7 +10,7 @@ import GoogleSignIn
 
 struct MessagingView: View {
     @EnvironmentObject var authModel: AuthenticationViewModel
-//    @ObservedObject var messsagesView: MessagesViewModel
+    @ObservedObject var messsagesView = MessagesViewModel()
     private let user = GIDSignIn.sharedInstance().currentUser
     @State private var viewProfile = false
     @Binding var username: String
@@ -27,87 +27,92 @@ struct MessagingView: View {
         if viewProfile {
             EditProfile(username: $username, color: $color, introNum: $introNum)
         } else {
-//            NavigationView {
-//                VStack {
-//                    Button {
-//                        self.viewProfile.toggle()
-//                    } label: {
-//                        Image(systemName: "gearshape.fill")
-//                            .resizable()
-//                            .frame(width: 28, height: 28)
-//                            .foregroundStyle(color)
-//                    }
-//                    .position(x: 350, y: -50)
-//                    List {
-//                        Text(messages[0])
-//                        Text(messages[1])
-//                        Text(messages[2])
-//                    }
-//                }
-//                .navigationBarTitle("Big Red Talks")
-//            }
-            ScrollViewReader { scrollView in
-                ScrollView {
-                    VStack {
-                        Text("Big Red Talks")
-                            .font(.title)
-                            .multilineTextAlignment(.center)
-
-                        Button {
-                            self.viewProfile.toggle()
-                        } label: {
-                            Image(systemName: "gearshape.fill")
-                                .resizable()
-                                .frame(width: 28, height: 28)
-                                .foregroundStyle(color)
-                        }
-                        .position(x: 350, y: -50)
-
-                        Divider().background(color)
-
-                        Button("Scroll to bottom") {
-                            withAnimation {
-                                scrollView.scrollTo(99, anchor: .center)
+            NavigationView {
+                ScrollViewReader { scrollView in
+                    ScrollView {
+                        VStack{
+                            Button("Scroll to bottom") {
+                                withAnimation {
+                                    scrollView.scrollTo(99, anchor: .center)
+                                }
+                            }
+                            HStack {
+                                TextField("Message...", text: $message)
+                                    .frame(width: 300, height: 50)
+                                    .font(Font.system(size: 16))
+                                    .foregroundColor(.black)
+                                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                                
+                                Button(action: {
+                                    messsagesView.sendMessage(messageContent: message, docId: "")
+                                }, label: {
+                                    Image(systemName: "arrow.up.circle.fill")
+                                })
                             }
                         }
-
-                        Spacer()
-
-                        HStack {
-                            TextField("Message...", text: $message)
-                                .frame(width: 300, height: 50)
-                                .font(Font.system(size: 16))
-                                .foregroundColor(.black)
-                                .textFieldStyle(RoundedBorderTextFieldStyle())
-
-                            Button(action: {
-                                //Send message
-//                                sendMessage(messageContent: <#T##String#>, docId: <#T##String#>)
-                            }, label: {
-                                Image(systemName: "arrow.up.circle.fill")
-                            })
+                        .navigationBarColor(backgroundColor: .gray, titleColor: .white)
+                        .navigationBarTitle("Big Red Talks")
+                        .navigationBarTitleDisplayMode(.inline)
+                        .toolbar {
+                            ToolbarItem(placement: .navigationBarTrailing) {
+                                HStack {
+                                    Image(systemName: "gearshape")
+                                        .resizable()
+                                        .frame(width: 25, height: 25)
+                                }
+                            }
                         }
+                        
                     }
                 }
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
-        //        let emailAddress = user?.profile.email
-        //        let fullName = user?.profile.name
-        //        let givenName = user?.profile.givenName
-        //        let familyName = user?.profile.familyName
-        //
-        //        Text("\(emailAddress ?? "|") \(fullName ?? "|") \(givenName ?? "|") \(familyName ?? "|")")
-        
-        //        Button("Log out") {
-        //            authModel.signOut()
-        //        }
-        //        .buttonStyle(AuthenticationButtonStyle())
+        }
     }
+}
+
+struct NavigationBarModifier: ViewModifier {
+    
+    var backgroundColor: UIColor?
+    var titleColor: UIColor?
+    
+    init(backgroundColor: UIColor?, titleColor: UIColor?) {
+        self.backgroundColor = backgroundColor
+        let coloredAppearance = UINavigationBarAppearance()
+        coloredAppearance.configureWithTransparentBackground()
+        coloredAppearance.backgroundColor = backgroundColor
+        coloredAppearance.titleTextAttributes = [.foregroundColor: titleColor ?? .white]
+        coloredAppearance.largeTitleTextAttributes = [.foregroundColor: titleColor ?? .white]
+        
+        UINavigationBar.appearance().standardAppearance = coloredAppearance
+        UINavigationBar.appearance().compactAppearance = coloredAppearance
+        UINavigationBar.appearance().scrollEdgeAppearance = coloredAppearance
+    }
+    
+    func body(content: Content) -> some View {
+        ZStack{
+            content
+            VStack {
+                GeometryReader { geometry in
+                    Color(self.backgroundColor ?? .gray)
+                        .frame(height: geometry.safeAreaInsets.top)
+                        .edgesIgnoringSafeArea(.top)
+                    Spacer()
+                }
+            }
+        }
+    }
+}
+
+extension View {
+    
+    func navigationBarColor(backgroundColor: UIColor?, titleColor: UIColor?) -> some View {
+        self.modifier(NavigationBarModifier(backgroundColor: backgroundColor, titleColor: titleColor))
+    }
+    
 }
 
 struct MessagingView_Previews: PreviewProvider {
     static var previews: some View {
-            MessagingView(username: .constant("HarrisonChin"), color: .constant(.red), introNum: .constant(4), message: "Hello all").environmentObject(AuthenticationViewModel())
+        MessagingView(username: .constant("HarrisonChin"), color: .constant(.red), introNum: .constant(4), message: "Hello all").environmentObject(AuthenticationViewModel())
     }
-}
 }
