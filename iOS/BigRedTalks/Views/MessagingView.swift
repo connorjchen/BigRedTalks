@@ -104,7 +104,6 @@ struct NavigationBarModifier: ViewModifier {
 }
 
 extension View {
-    
     func navigationBarColor(backgroundColor: UIColor?, titleColor: UIColor?) -> some View {
         self.modifier(NavigationBarModifier(backgroundColor: backgroundColor, titleColor: titleColor))
     }

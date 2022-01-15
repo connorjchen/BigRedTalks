@@ -23,8 +23,4 @@ class MessagesViewModel: ObservableObject {
     func sendMessage (messageContent: String, docId: String) {
         
     }
-    
-    func fetchData(docId: String){
-        
-    }
 }
