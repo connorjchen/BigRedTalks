@@ -1,2 +1,6 @@
+/node_modules
+npm-debug.log
+.DS_Store
+
 # Don't expose database connection login
-.env
+/*.env
