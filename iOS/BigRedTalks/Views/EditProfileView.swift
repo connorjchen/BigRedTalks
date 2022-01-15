@@ -11,16 +11,17 @@ struct EditProfile: View {
     @Binding var username: String
     @Binding var color : Color
     @Binding var introNum : Int
-    //@Binding var email: String
     @State private var doneEditing = false
     @EnvironmentObject var authModel: AuthenticationViewModel
+    @ObservedObject var profileModel = ProfileModel()
+    
     internal var textStyle = LinearGradient(gradient: Gradient(colors: [Color("darkBlue"), Color("lightBlue")]), startPoint: .top, endPoint: .bottom)
     internal var buttonStyle = LinearGradient(gradient: Gradient(colors: [Color("darkBlue"), Color("lightBlue")]), startPoint: .leading, endPoint: .trailing)
     
     func makeButton(buttonColor : Color) -> some View {
         let button =
         Button(action: {
-            color = buttonColor           
+            self.color = buttonColor
         }){
             Text("")
                 .frame(width: 28, height: 30)
@@ -53,13 +54,16 @@ struct EditProfile: View {
                             .fontWeight(.light)
                             .padding(.leading, 1)
                         
-                        TextField("Ex: Touchdown", text: $username)
-                            .frame(width: 280, height: 25)
-                            .font(Font.system(size: 16))
-                            .padding()
-                            .background(RoundedRectangle(cornerRadius: 16).fill(Color(hue: 0.542, saturation: 0.152, brightness: 0.975)))
-                            .foregroundColor(Color(hue: 0.639, saturation: 0.706, brightness: 0.605))
-                            .padding(.bottom, 30)
+                        HStack{
+                            TextField("Ex: Touchdown", text: $username)
+                                .frame(width: 280, height: 25)
+                                .font(Font.system(size: 16))
+                                .padding()
+                                .background(RoundedRectangle(cornerRadius: 16).fill(Color(hue: 0.542, saturation: 0.152, brightness: 0.975)))
+                                .foregroundColor(Color(hue: 0.639, saturation: 0.706, brightness: 0.605))
+                                .padding(.bottom, 30)
+                        }
+                        
                     }
                     
                     VStack(alignment: .leading, spacing: 5) {
@@ -196,6 +200,7 @@ struct EditProfile: View {
                     Spacer()
                     
                     Button {
+                        profileModel.editProfile(id: username, bubbleColor: color)
                         self.doneEditing.toggle()
                     } label: {
                         Text("Save and exit")
@@ -213,7 +218,6 @@ struct EditProfile: View {
                             .frame(width: 250, height: 50)
                             .overlay(Capsule().stroke(buttonStyle, lineWidth: 4))
                     }
-                    
                     Spacer()
                 }
                 .frame(
