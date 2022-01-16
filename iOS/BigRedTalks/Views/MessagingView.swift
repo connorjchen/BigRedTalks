@@ -10,7 +10,7 @@ import GoogleSignIn
 
 struct MessagingView: View {
     @EnvironmentObject var authModel: AuthenticationViewModel
-    @ObservedObject var messsagesView = MessagesViewModel()
+    @ObservedObject var messagesModel: MessagesViewModel
     private let user = GIDSignIn.sharedInstance().currentUser
     @State private var viewProfile = false
     @Binding var username: String
@@ -18,51 +18,77 @@ struct MessagingView: View {
     @Binding var introNum : Int
     @State var message : String
     
-    //Random data
-    let users: [String] = ["Patrick", "Harrison", "Melissa", "Connor", "Matthew"]
-    let messages: [String] = ["Hello", "hi", "what's up"]
-    //    @Binding var email: String
+    var messages = [Message(id: "0", content: "hello my name is connor and welcome to big red talks, hope you enjoy your experience", name: "Connor"), Message(id: "1", content: "hi", name: "Patrick"), Message(id: "2", content: "im here", name: "Melissa"), Message(id: "3", content: "hello my name is connor and welcome to big red talks, hope you enjoy your experience", name: "Connor"), Message(id: "4", content: "hi", name: "Patrick"), Message(id: "5", content: "im here", name: "Melissa"), Message(id: "6", content: "hello my name is connor and welcome to big red talks, hope you enjoy your experience", name: "Connor"), Message(id: "7", content: "hi", name: "Patrick"), Message(id: "8", content: "im here", name: "Melissa"), Message(id: "9", content: "hello my name is connor and welcome to big red talks, hope you enjoy your experience", name: "Connor"), Message(id: "10", content: "hi", name: "Patrick"), Message(id: "11", content: "im here", name: "Melissa")]
     
     var body: some View {
         if viewProfile {
             EditProfile(username: $username, color: $color, introNum: $introNum)
         } else {
+//        https://stackoverflow.com/questions/58376681/swiftui-automatically-scroll-to-bottom-in-scrollview-bottom-first for scroll bottom
             NavigationView {
-                ScrollViewReader { scrollView in
+                VStack {
                     ScrollView {
-                        VStack{
-                            Button("Scroll to bottom") {
-                                withAnimation {
-                                    scrollView.scrollTo(99, anchor: .center)
-                                }
-                            }
+                        ForEach(messages) { message in
                             HStack {
-                                TextField("Message...", text: $message)
-                                    .frame(width: 300, height: 50)
-                                    .font(Font.system(size: 16))
-                                    .foregroundColor(.black)
-                                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                                VStack (alignment: .leading) {
+                                    Text(message.name)
+                                        .bold()
+                                    Text(message.content)
+                                        .multilineTextAlignment(.leading)
+                                        .padding(.bottom, 5)
+                                }
+                                
+                                Spacer()
                                 
                                 Button(action: {
-                                    messsagesView.sendMessage(messageContent: message, docId: "")
+                                    // like message
                                 }, label: {
-                                    Image(systemName: "arrow.up.circle.fill")
+                                    ZStack{
+                                        // take fill away if user is not in the messages' liked list
+                                        Image(systemName: "heart.fill")
+                                            .foregroundColor(.red)
+                                        Image(systemName: "heart")
+                                            .foregroundColor(.black)
+                                    }
                                 })
+                                
+                                // put liked length here
+                                Text("7")
+                                    .padding(.leading, -7)
                             }
+                            .padding(.horizontal, 5)
                         }
-                        .navigationBarColor(backgroundColor: .gray, titleColor: .white)
-                        .navigationBarTitle("Big Red Talks")
-                        .navigationBarTitleDisplayMode(.inline)
-                        .toolbar {
-                            ToolbarItem(placement: .navigationBarTrailing) {
-                                HStack {
-                                    Image(systemName: "gearshape")
-                                        .resizable()
-                                        .frame(width: 25, height: 25)
-                                }
-                            }
-                        }
+                    }
+                    
+                    HStack {
+                        TextField("Message...", text: $message)
+                            .frame(width: 300, height: 50)
+                            .font(Font.system(size: 16))
+                            .foregroundColor(.black)
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
                         
+                        Button(action: {
+                            //Send message
+                            // sendMessage(messageContent: <#T##String#>, docId: <#T##String#>)
+                        }, label: {
+                            Image(systemName: "arrow.up.circle.fill")
+                        })
+                    }
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .navigationBarColor(backgroundColor: .gray, titleColor: .white)
+                .navigationBarTitle("Big Red Talks")
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button(action: {
+                            self.viewProfile.toggle()
+                        }, label: {
+                            Image(systemName: "gearshape")
+                                .resizable()
+                                .frame(width: 25, height: 25)
+                                .foregroundColor(.black)
+                        })
                     }
                 }
             }
@@ -112,6 +138,7 @@ extension View {
 
 struct MessagingView_Previews: PreviewProvider {
     static var previews: some View {
-        MessagingView(username: .constant("HarrisonChin"), color: .constant(.red), introNum: .constant(4), message: "Hello all").environmentObject(AuthenticationViewModel())
+        MessagingView(messagesModel: MessagesViewModel(), username: .constant("HarrisonChin"), color: .constant(.red), introNum: .constant(4), message: "Hello all")
+            .environmentObject(AuthenticationViewModel())
     }
 }
