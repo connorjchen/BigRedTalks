@@ -14,32 +14,32 @@ struct MessagingView: View {
     private let user = GIDSignIn.sharedInstance().currentUser
     @State private var viewProfile = false
     @Binding var username: String
-    @Binding var color : Color
+    @Binding var color : UIColor
     @Binding var introNum : Int
-    @State var message : String
+    @State var messageField : String
     
-    var messages = [Message(id: "0", content: "hello my name is connor and welcome to big red talks, hope you enjoy your experience", name: "Connor"), Message(id: "1", content: "hi", name: "Patrick"), Message(id: "2", content: "im here", name: "Melissa"), Message(id: "3", content: "hello my name is connor and welcome to big red talks, hope you enjoy your experience", name: "Connor"), Message(id: "4", content: "hi", name: "Patrick"), Message(id: "5", content: "im here", name: "Melissa"), Message(id: "6", content: "hello my name is connor and welcome to big red talks, hope you enjoy your experience", name: "Connor"), Message(id: "7", content: "hi", name: "Patrick"), Message(id: "8", content: "im here", name: "Melissa"), Message(id: "9", content: "hello my name is connor and welcome to big red talks, hope you enjoy your experience", name: "Connor"), Message(id: "10", content: "hi", name: "Patrick"), Message(id: "11", content: "im here", name: "Melissa")]
+    var messages = [Message(id: "0", content: "hello my name is connor and welcome to big red talks, hope you enjoy your experience", username: "Connor"), Message(id: "1", content: "hi", username: "Patrick"), Message(id: "2", content: "im here", username: "Melissa"), Message(id: "3", content: "hello my name is connor and welcome to big red talks, hope you enjoy your experience", username: "Connor"), Message(id: "4", content: "hi", username: "Patrick"), Message(id: "5", content: "im here", username: "Melissa"), Message(id: "6", content: "hello my name is connor and welcome to big red talks, hope you enjoy your experience", username: "Connor"), Message(id: "7", content: "hi", username: "Patrick"), Message(id: "8", content: "im here", username: "Melissa"), Message(id: "9", content: "hello my name is connor and welcome to big red talks, hope you enjoy your experience", username: "Connor"), Message(id: "10", content: "hi", username: "Patrick"), Message(id: "11", content: "im here", username: "Melissa")]
     
     var body: some View {
         if viewProfile {
             EditProfile(username: $username, color: $color, introNum: $introNum)
         } else {
-//        https://stackoverflow.com/questions/58376681/swiftui-automatically-scroll-to-bottom-in-scrollview-bottom-first for scroll bottom
+// https://stackoverflow.com/questions/58376681/swiftui-automatically-scroll-to-bottom-in-scrollview-bottom-first for scroll bottom
             NavigationView {
                 VStack {
                     ScrollView {
                         ForEach(messages) { message in
                             HStack {
                                 VStack (alignment: .leading) {
-                                    Text(message.name)
+                                    Text(message.username)
                                         .bold()
                                     Text(message.content)
                                         .multilineTextAlignment(.leading)
                                         .padding(.bottom, 5)
                                 }
-                                
+
                                 Spacer()
-                                
+
                                 Button(action: {
                                     // like message
                                 }, label: {
@@ -51,7 +51,7 @@ struct MessagingView: View {
                                             .foregroundColor(.black)
                                     }
                                 })
-                                
+
                                 // put liked length here
                                 Text("7")
                                     .padding(.leading, -7)
@@ -60,8 +60,10 @@ struct MessagingView: View {
                         }
                     }
                     
+                    Spacer()
+                    
                     HStack {
-                        TextField("Message...", text: $message)
+                        TextField("Message...", text: $messageField)
                             .frame(width: 300, height: 50)
                             .font(Font.system(size: 16))
                             .foregroundColor(.black)
@@ -74,9 +76,11 @@ struct MessagingView: View {
                             Image(systemName: "arrow.up.circle.fill")
                         })
                     }
+                    .frame(maxWidth: .infinity)
+                    .background(Color(color))
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .navigationBarColor(backgroundColor: .gray, titleColor: .white)
+                .navigationBarColor(backgroundColor: color, titleColor: .white)
                 .navigationBarTitle("Big Red Talks")
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
@@ -138,7 +142,7 @@ extension View {
 
 struct MessagingView_Previews: PreviewProvider {
     static var previews: some View {
-        MessagingView(messagesModel: MessagesViewModel(), username: .constant("HarrisonChin"), color: .constant(.red), introNum: .constant(4), message: "Hello all")
+        MessagingView(messagesModel: MessagesViewModel(), username: .constant("HarrisonChin"), color: .constant(.gray), introNum: .constant(4), messageField: "Hello all")
             .environmentObject(AuthenticationViewModel())
     }
 }

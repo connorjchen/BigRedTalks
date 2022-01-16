@@ -14,7 +14,7 @@ struct ProfileView: View {
     @State private var home = false
     @Binding var username : String
     @Binding var email : String
-    @Binding var color : Color
+    @Binding var color : UIColor
     @Binding var introNum : Int
     
     var body: some View {

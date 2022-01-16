@@ -9,7 +9,7 @@ import SwiftUI
 
 struct EditProfile: View {
     @Binding var username: String
-    @Binding var color : Color
+    @Binding var color : UIColor
     @Binding var introNum : Int
     @State private var doneEditing = false
     @EnvironmentObject var authModel: AuthenticationViewModel
@@ -18,14 +18,14 @@ struct EditProfile: View {
     internal var textStyle = LinearGradient(gradient: Gradient(colors: [Color("darkBlue"), Color("lightBlue")]), startPoint: .top, endPoint: .bottom)
     internal var buttonStyle = LinearGradient(gradient: Gradient(colors: [Color("darkBlue"), Color("lightBlue")]), startPoint: .leading, endPoint: .trailing)
     
-    func makeButton(buttonColor : Color) -> some View {
+    func makeButton(buttonColor : UIColor) -> some View {
         let button =
         Button(action: {
             self.color = buttonColor
         }){
             Text("")
                 .frame(width: 28, height: 30)
-                .background(buttonColor)
+                .background(Color(buttonColor))
                 .clipShape(Circle())
         }
         .buttonStyle(PlainButtonStyle())
@@ -37,7 +37,7 @@ struct EditProfile: View {
     var body: some View {
         if doneEditing {
             // make sure all this data is right - messagesmodel shouldnt instantiate new one
-            MessagingView(messagesModel: MessagesViewModel(), username: $username, color: $color, introNum: $introNum, message: "")
+            MessagingView(messagesModel: MessagesViewModel(), username: $username, color: $color, introNum: $introNum, messageField: "")
         }
         else {
             ZStack{
@@ -82,19 +82,19 @@ struct EditProfile: View {
                                 Group {
                                     Spacer()
                                     
-                                    makeButton(buttonColor: .red)
+                                    makeButton(buttonColor: UIColor(hue: 1, saturation: 1, brightness: 1, alpha: 1.0))
                                         
                                     Spacer()
                                     
-                                    makeButton(buttonColor: .blue)
+                                    makeButton(buttonColor: UIColor(hue: 0.65, saturation: 1, brightness: 1, alpha: 1.0))
                                     
                                     Spacer()
                                     
-                                    makeButton(buttonColor: .green)
+                                    makeButton(buttonColor: UIColor(hue: 0.39, saturation: 0.39, brightness: 0.5, alpha: 1.0))
                                     
                                     Spacer()
                                     
-                                    makeButton(buttonColor: .yellow)
+                                    makeButton(buttonColor: UIColor(hue: 0.19, saturation: 0.39, brightness: 0.39, alpha: 1.0))
                                     
                                     Spacer()
                                     
@@ -120,33 +120,34 @@ struct EditProfile: View {
                                 Group {
                                     Spacer()
                                     
-                                    makeButton(buttonColor: Color(hue: 0.934, saturation: 0.553, brightness: 0.934))
+                                    makeButton(buttonColor: UIColor(hue: 0.934, saturation: 0.553, brightness: 0.934, alpha: 1.0))
                                     
                                     Spacer()
                                     
-                                    makeButton(buttonColor: Color(hue: 0.934, saturation: 0.845, brightness: 0.852))
-                                    Spacer()
-                                    
-                                    makeButton(buttonColor: Color(hue: 0.865, saturation: 0.571, brightness: 0.616))
+                                    makeButton(buttonColor: UIColor(hue: 0.934, saturation: 0.845, brightness: 0.852, alpha: 1.0))
                                     
                                     Spacer()
                                     
-                                    makeButton(buttonColor: Color(hue: 0.405, saturation: 1.0, brightness: 0.615))
+                                    makeButton(buttonColor: UIColor(hue: 0.865, saturation: 0.8, brightness: 0.616, alpha: 1.0))
+                                    
+                                    Spacer()
+                                    
+                                    makeButton(buttonColor: UIColor(hue: 0.405, saturation: 1.0, brightness: 0.615, alpha: 1.0))
                                     
                                     Spacer()
                                     
                                     
-                                    makeButton(buttonColor: Color(hue: 0.121, saturation: 0.357, brightness: 0.73))
+                                    makeButton(buttonColor: UIColor(hue: 0.121, saturation: 0.357, brightness: 0.73, alpha: 1.0))
                                 }
                                 
                                 Group{
                                     Spacer()
                                     
-                                    makeButton(buttonColor: Color(hue: 0.843, saturation: 0.404, brightness: 0.975))
+                                    makeButton(buttonColor: UIColor(hue: 0.843, saturation: 0.404, brightness: 0.975, alpha: 1.0))
                                     
                                     Spacer()
                                     
-                                   makeButton(buttonColor: Color(hue: 0.769, saturation: 0.391, brightness: 1.0))
+                                    makeButton(buttonColor: UIColor(hue: 0.769, saturation: 0.391, brightness: 1.0, alpha: 1.0))
                                     
                                     Spacer()
                                 }
@@ -158,33 +159,33 @@ struct EditProfile: View {
                                 Group {
                                     Spacer()
                                     
-                                    makeButton(buttonColor: .indigo)
+                                    makeButton(buttonColor: UIColor(hue: 1, saturation: 0.27, brightness: 0.7, alpha: 1.0))
                                     
                                     Spacer()
                                     
-                                    makeButton(buttonColor: Color(hue: 0.542, saturation: 0.619, brightness: 0.442))
+                                    makeButton(buttonColor: UIColor(hue: 0.542, saturation: 0.619, brightness: 0.442, alpha: 1.0))
                                     
                                     Spacer()
                                     
-                                    makeButton(buttonColor: .teal)
+                                    makeButton(buttonColor: UIColor(hue: 0.81, saturation: 0.27, brightness: 0.27, alpha: 1.0))
                                     
                                     Spacer()
                                     
-                                    makeButton(buttonColor: Color.init(hue: 190, saturation: 30, brightness: 30))
+                                    makeButton(buttonColor: UIColor(hue: 0.19, saturation: 0.9, brightness: 0.65, alpha: 1.0))
                                     
                                     Spacer()
                                     
-                                    makeButton(buttonColor: Color.init(red: 60, green: 60, blue: 0))
+                                    makeButton(buttonColor: UIColor(hue: 1, saturation: 0.3, brightness: 1, alpha: 1.0))
                                 }
                                 
                                 Group{
                                     Spacer()
                                     
-                                    makeButton(buttonColor: Color.init(red: 0, green: 160, blue: 0))
+                                    makeButton(buttonColor: UIColor(hue: 1, saturation: 0.5, brightness: 1, alpha: 1.0))
                                     
                                     Spacer()
                                     
-                                    makeButton(buttonColor: Color(hue: 0.542, saturation: 0.574, brightness: 0.976))
+                                    makeButton(buttonColor: UIColor(hue: 0.542, saturation: 0.574, brightness: 0.976, alpha: 1.0))
                                     
                                     Spacer()
                                 }
@@ -201,7 +202,7 @@ struct EditProfile: View {
                     Spacer()
                     
                     Button {
-                        profileModel.editProfile(id: username, bubbleColor: color)
+                        profileModel.editProfile(id: username, bubbleColor: color.hexa!)
                         self.doneEditing.toggle()
                     } label: {
                         Text("Save and exit")
@@ -219,6 +220,7 @@ struct EditProfile: View {
                             .frame(width: 250, height: 50)
                             .overlay(Capsule().stroke(buttonStyle, lineWidth: 4))
                     }
+                    
                     Spacer()
                 }
                 .frame(
@@ -229,6 +231,26 @@ struct EditProfile: View {
                 )
             }
         }
+    }
+}
+
+extension UIColor {
+    var rgb: (red: CGFloat, green: CGFloat, blue: CGFloat)? {
+            var r: CGFloat = 0, g: CGFloat = 0, b: CGFloat = 0
+            guard getRed(&r, green: &g, blue: &b, alpha: nil) else { return nil }
+            return (r,g,b)
+        }
+    //Converts the hsb value to hex
+    var hexa: String? {
+        guard let (r,g,b) = rgb else { return nil }
+        return "#" + UInt8(r*255).hexa + UInt8(g*255).hexa + UInt8(b*255).hexa
+    }
+}
+
+extension UInt8 {
+    var hexa: String {
+        let value = String(self, radix: 16, uppercase: true)
+        return (self < 16 ? "0": "") + value
     }
 }
 
