@@ -7,18 +7,19 @@
 
 import Foundation
 import SwiftUI
+import Firebase
 
-struct Profile: Identifiable {
+struct Profile: Codable, Identifiable {
     var id: String  //This is the username
-    var email: String?
-    var bubbleColor: Color
+    var bubbleColor: String //will hold the hex codes
 }
     
 class ProfileModel: ObservableObject {
     @Published var profiles = [Profile]()
-    private let db = ""
+    private let user = Auth.auth().currentUser
+    private let baseUrl = "http://bigredtalks.herokuapp.com/"
     
-    func editProfile(id: String, bubbleColor: Color){
+    func editProfile(id: String, bubbleColor: String){
         
     }
 }

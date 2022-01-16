@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		713BA87B27877C1600A312FF /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713BA87A27877C1600A312FF /* ProfileView.swift */; };
 		713BA87F2787965C00A312FF /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713BA87E2787965C00A312FF /* EditProfileView.swift */; };
 		7191B82127922F5D0048C349 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7191B82027922F5D0048C349 /* ProfileModel.swift */; };
 		71C64C4F278F6FC700D026DD /* MessagesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C64C4E278F6FC700D026DD /* MessagesViewModel.swift */; };
@@ -34,7 +33,6 @@
 /* Begin PBXFileReference section */
 		0DA05D5882A23CDC8A82FCF9 /* Pods-BigRedTalks.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BigRedTalks.release.xcconfig"; path = "Target Support Files/Pods-BigRedTalks/Pods-BigRedTalks.release.xcconfig"; sourceTree = "<group>"; };
 		29E529B4B8A7189A6DA540E9 /* Pods_BigRedTalks.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BigRedTalks.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		713BA87A27877C1600A312FF /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		713BA87E2787965C00A312FF /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
 		7191B82027922F5D0048C349 /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
 		71C64C4E278F6FC700D026DD /* MessagesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewModel.swift; sourceTree = "<group>"; };
@@ -142,7 +140,6 @@
 				9079E2832786418C0058CDAF /* IntroView1.swift */,
 				9079E2852786461A0058CDAF /* IntroView2.swift */,
 				9079E287278646230058CDAF /* IntroView3.swift */,
-				713BA87A27877C1600A312FF /* ProfileView.swift */,
 				713BA87E2787965C00A312FF /* EditProfileView.swift */,
 			);
 			path = Views;
@@ -317,7 +314,6 @@
 				904944BB27712775000FE816 /* VerifyLocationView.swift in Sources */,
 				9082F1412784F62E0057AAC7 /* OutOfBoundsView.swift in Sources */,
 				7191B82127922F5D0048C349 /* ProfileModel.swift in Sources */,
-				713BA87B27877C1600A312FF /* ProfileView.swift in Sources */,
 				901978A6278532A200310D01 /* AuthenticationViewModel.swift in Sources */,
 				901EF3D027853C1F00EAC7C6 /* MessagingView.swift in Sources */,
 				9079E2862786461A0058CDAF /* IntroView2.swift in Sources */,
