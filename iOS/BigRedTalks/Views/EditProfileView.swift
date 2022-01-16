@@ -35,7 +35,8 @@ struct EditProfile: View {
     
     var body: some View {
         if doneEditing {
-            MessagingView(username: $username, color: $color, introNum: $introNum, message: "")
+            // make sure all this data is right - messagesmodel shouldnt instantiate new one
+            MessagingView(messagesModel: MessagesViewModel(), username: $username, color: $color, introNum: $introNum, message: "")
         }
         else {
             ZStack{
