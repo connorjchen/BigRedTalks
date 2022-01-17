@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct Message: Codable, Identifiable {
-    var id: String?
+struct Message: Codable {
+    var _id: String
     var senderEmail: String
     var username: String
     var text: String
@@ -17,8 +17,12 @@ struct Message: Codable, Identifiable {
 }
 
 class MessagesViewModel: ObservableObject {
-    @Published var messages = [Message]()
-    private let baseUrl = "http://bigredtalks.herokuapp.com/"
+    @Published var messages : [Message] = []
+    private let baseUrl = "https://bigredtalks.herokuapp.com/"
+    
+    init() {
+        getMessages(messageIndex: 0)
+    }
     
     func getMessages (messageIndex: Int) {
         guard let url = URL(string: baseUrl + "messages/" + String(messageIndex)) else { return }

@@ -9,37 +9,33 @@ import SwiftUI
 import GoogleSignIn
 
 struct MessagingView: View {
-    @EnvironmentObject var authModel: AuthenticationViewModel
-    @ObservedObject var messagesModel: MessagesViewModel
-    private let user = GIDSignIn.sharedInstance().currentUser
+    @StateObject var messagesModel = MessagesViewModel()
+    @EnvironmentObject var profileModel: ProfileViewModel
     @State private var viewProfile = false
-    @Binding var username: String
-    @Binding var color : Color
-    @Binding var introNum : Int
-    @State var message : String
+    @State var message : String = ""
     
-    var messages = [Message(id: "0", content: "hello my name is connor and welcome to big red talks, hope you enjoy your experience", name: "Connor"), Message(id: "1", content: "hi", name: "Patrick"), Message(id: "2", content: "im here", name: "Melissa"), Message(id: "3", content: "hello my name is connor and welcome to big red talks, hope you enjoy your experience", name: "Connor"), Message(id: "4", content: "hi", name: "Patrick"), Message(id: "5", content: "im here", name: "Melissa"), Message(id: "6", content: "hello my name is connor and welcome to big red talks, hope you enjoy your experience", name: "Connor"), Message(id: "7", content: "hi", name: "Patrick"), Message(id: "8", content: "im here", name: "Melissa"), Message(id: "9", content: "hello my name is connor and welcome to big red talks, hope you enjoy your experience", name: "Connor"), Message(id: "10", content: "hi", name: "Patrick"), Message(id: "11", content: "im here", name: "Melissa")]
+//    var messages = [Message(id: "0", content: "hello my name is connor and welcome to big red talks, hope you enjoy your experience", name: "Connor"), Message(id: "1", content: "hi", name: "Patrick"), Message(id: "2", content: "im here", name: "Melissa"), Message(id: "3", content: "hello my name is connor and welcome to big red talks, hope you enjoy your experience", name: "Connor"), Message(id: "4", content: "hi", name: "Patrick"), Message(id: "5", content: "im here", name: "Melissa"), Message(id: "6", content: "hello my name is connor and welcome to big red talks, hope you enjoy your experience", name: "Connor"), Message(id: "7", content: "hi", name: "Patrick"), Message(id: "8", content: "im here", name: "Melissa"), Message(id: "9", content: "hello my name is connor and welcome to big red talks, hope you enjoy your experience", name: "Connor"), Message(id: "10", content: "hi", name: "Patrick"), Message(id: "11", content: "im here", name: "Melissa")]
     
     var body: some View {
         if viewProfile {
-            EditProfile(username: $username, color: $color, introNum: $introNum)
+            EditProfile()
         } else {
 //        https://stackoverflow.com/questions/58376681/swiftui-automatically-scroll-to-bottom-in-scrollview-bottom-first for scroll bottom
             NavigationView {
                 VStack {
                     ScrollView {
-                        ForEach(messages) { message in
+                        ForEach(messagesModel.messages, id: \._id) { message in
                             HStack {
                                 VStack (alignment: .leading) {
-                                    Text(message.name)
+                                    Text(message.username)
                                         .bold()
-                                    Text(message.content)
+                                    Text(message.text)
                                         .multilineTextAlignment(.leading)
                                         .padding(.bottom, 5)
                                 }
-                                
+
                                 Spacer()
-                                
+
                                 Button(action: {
                                     // like message
                                 }, label: {
@@ -51,7 +47,7 @@ struct MessagingView: View {
                                             .foregroundColor(.black)
                                     }
                                 })
-                                
+
                                 // put liked length here
                                 Text("7")
                                     .padding(.leading, -7)
@@ -59,6 +55,8 @@ struct MessagingView: View {
                             .padding(.horizontal, 5)
                         }
                     }
+                    
+                    Spacer()
                     
                     HStack {
                         TextField("Message...", text: $message)
@@ -138,7 +136,7 @@ extension View {
 
 struct MessagingView_Previews: PreviewProvider {
     static var previews: some View {
-        MessagingView(messagesModel: MessagesViewModel(), username: .constant("HarrisonChin"), color: .constant(.red), introNum: .constant(4), message: "Hello all")
-            .environmentObject(AuthenticationViewModel())
+        MessagingView()
+            .environmentObject(ProfileViewModel())
     }
 }

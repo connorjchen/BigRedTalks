@@ -8,12 +8,11 @@
 import SwiftUI
 
 struct EditProfile: View {
-    @Binding var username: String
-    @Binding var color : Color
-    @Binding var introNum : Int
+    @State var color : Color = .red
     @State private var doneEditing = false
     @EnvironmentObject var authModel: AuthenticationViewModel
-    @ObservedObject var profileModel = ProfileModel()
+    @EnvironmentObject var profileModel: ProfileViewModel
+    @State var username : String = ""
     
     internal var textStyle = LinearGradient(gradient: Gradient(colors: [Color("darkBlue"), Color("lightBlue")]), startPoint: .top, endPoint: .bottom)
     internal var buttonStyle = LinearGradient(gradient: Gradient(colors: [Color("darkBlue"), Color("lightBlue")]), startPoint: .leading, endPoint: .trailing)
@@ -36,8 +35,7 @@ struct EditProfile: View {
     
     var body: some View {
         if doneEditing {
-            // make sure all this data is right - messagesmodel shouldnt instantiate new one
-            MessagingView(messagesModel: MessagesViewModel(), username: $username, color: $color, introNum: $introNum, message: "")
+            MessagingView()
         }
         else {
             ZStack{
@@ -201,7 +199,7 @@ struct EditProfile: View {
                     Spacer()
                     
                     Button {
-                        profileModel.editProfile(id: username, bubbleColor: color)
+//                        profileModel.editProfile(id: username, bubbleColor: color)
                         self.doneEditing.toggle()
                     } label: {
                         Text("Save and exit")
@@ -234,6 +232,8 @@ struct EditProfile: View {
 
 struct EditProfile_Previews: PreviewProvider {
     static var previews: some View {
-        EditProfile(username: .constant("HarrisonChin"), color: .constant(.red), introNum: .constant(4))
+        EditProfile()
+            .environmentObject(AuthenticationViewModel())
+            .environmentObject(ProfileViewModel())
     }
 }
