@@ -9,31 +9,26 @@ import SwiftUI
 import GoogleSignIn
 
 struct MessagingView: View {
-    @EnvironmentObject var authModel: AuthenticationViewModel
-    @ObservedObject var messagesModel: MessagesViewModel
-    private let user = GIDSignIn.sharedInstance().currentUser
+    @StateObject var messagesModel = MessagesViewModel()
+    @EnvironmentObject var profileModel: ProfileViewModel
     @State private var viewProfile = false
-    @Binding var username: String
-    @Binding var color : UIColor
-    @Binding var introNum : Int
-    @State var messageField : String
-    
-    var messages = [Message(id: "0", content: "hello my name is connor and welcome to big red talks, hope you enjoy your experience", username: "Connor"), Message(id: "1", content: "hi", username: "Patrick"), Message(id: "2", content: "im here", username: "Melissa"), Message(id: "3", content: "hello my name is connor and welcome to big red talks, hope you enjoy your experience", username: "Connor"), Message(id: "4", content: "hi", username: "Patrick"), Message(id: "5", content: "im here", username: "Melissa"), Message(id: "6", content: "hello my name is connor and welcome to big red talks, hope you enjoy your experience", username: "Connor"), Message(id: "7", content: "hi", username: "Patrick"), Message(id: "8", content: "im here", username: "Melissa"), Message(id: "9", content: "hello my name is connor and welcome to big red talks, hope you enjoy your experience", username: "Connor"), Message(id: "10", content: "hi", username: "Patrick"), Message(id: "11", content: "im here", username: "Melissa")]
+    @State var messageField : String = ""
     
     var body: some View {
         if viewProfile {
-            EditProfile(username: $username, color: $color, introNum: $introNum)
+            EditProfile()
         } else {
 // https://stackoverflow.com/questions/58376681/swiftui-automatically-scroll-to-bottom-in-scrollview-bottom-first for scroll bottom
             NavigationView {
                 VStack {
                     ScrollView {
-                        ForEach(messages) { message in
+                        // should get messages on init but probably doesn't update ever
+                        ForEach(messagesModel.messages, id: \._id) { message in
                             HStack {
                                 VStack (alignment: .leading) {
                                     Text(message.username)
                                         .bold()
-                                    Text(message.content)
+                                    Text(message.text)
                                         .multilineTextAlignment(.leading)
                                         .padding(.bottom, 5)
                                 }
@@ -63,15 +58,15 @@ struct MessagingView: View {
                     Spacer()
                     
                     HStack {
-                        TextField("Message...", text: $messageField)
+                        TextField("Message", text: $messageField)
                             .frame(width: 300, height: 50)
                             .font(Font.system(size: 16))
                             .foregroundColor(.black)
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                         
                         Button(action: {
-                            //Send message
-                            // sendMessage(messageContent: <#T##String#>, docId: <#T##String#>)
+                            messagesModel.sendMessage(messageSenderEmail: profileModel.profile.user._id, messageUsername: profileModel.profile.user.username, messageText: self.message)
+                            self.message = ""
                         }, label: {
                             Image(systemName: "arrow.up.circle.fill")
                         })
@@ -142,7 +137,7 @@ extension View {
 
 struct MessagingView_Previews: PreviewProvider {
     static var previews: some View {
-        MessagingView(messagesModel: MessagesViewModel(), username: .constant("HarrisonChin"), color: .constant(.gray), introNum: .constant(4), messageField: "Hello all")
-            .environmentObject(AuthenticationViewModel())
+        MessagingView()
+            .environmentObject(ProfileViewModel())
     }
 }

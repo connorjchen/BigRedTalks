@@ -12,11 +12,7 @@ struct HomeView: View {
     
     @EnvironmentObject var locationManager: LocationManager
     @EnvironmentObject var authModel: AuthenticationViewModel
-    private let user = GIDSignIn.sharedInstance().currentUser
-    @State var username: String = ""//(user?.profile.name)
-    @State var color: UIColor = .red
-//    @State var email: String = (user?.profile.email)
-    
+    @StateObject var profileModel = ProfileViewModel()
     @State var introNum = 1
     
     var body: some View {
@@ -31,10 +27,12 @@ struct HomeView: View {
                     } else if (introNum == 3) {
                         IntroView3(introNum: $introNum)
                     } else if (introNum == 4) {
-                        MessagingView(messagesModel: MessagesViewModel(), username: $username, color: $color, introNum: $introNum, messageField: "")
+                        MessagingView()
+                            .environmentObject(profileModel)
                     }
                 } else {
-                    MessagingView(messagesModel: MessagesViewModel(), username: $username, color: $color, introNum: $introNum, messageField: "")
+                    MessagingView()
+                        .environmentObject(profileModel)
                 }
 //            } else {
 //                OutOfBoundsView()
@@ -47,7 +45,7 @@ struct HomeView: View {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView(username: "HarrisonChin", color: .red)
+        HomeView()
             .environmentObject(LocationManager())
             .environmentObject(AuthenticationViewModel())
     }

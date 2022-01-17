@@ -64,9 +64,7 @@ extension AuthenticationViewModel: GIDSignInDelegate {
             
             let email: String = user!.profile.email
             let emailArr = email.components(separatedBy: "@")
-            let netID: String = emailArr[0]
             let domain: String = emailArr[1]
-            print("\(netID) \(domain)")
             
             if (domain == "cornell.edu"){
                 firebaseAuthentication(withUser: user)

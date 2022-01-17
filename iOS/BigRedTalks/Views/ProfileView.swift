@@ -21,7 +21,7 @@ struct ProfileView: View {
         if editProfile {
             EditProfile(username: $username, color: $color, introNum: $introNum)
         } else if home {
-            HomeView(username: username, color: color)
+            HomeView()
         } else{
             ZStack {
                 Group {

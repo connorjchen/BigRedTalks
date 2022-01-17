@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		713BA87F2787965C00A312FF /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713BA87E2787965C00A312FF /* EditProfileView.swift */; };
-		7191B82127922F5D0048C349 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7191B82027922F5D0048C349 /* ProfileModel.swift */; };
 		71C64C4F278F6FC700D026DD /* MessagesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C64C4E278F6FC700D026DD /* MessagesViewModel.swift */; };
 		901978A6278532A200310D01 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901978A5278532A200310D01 /* AuthenticationViewModel.swift */; };
 		901C27562770FBC30043CFFE /* BigRedTalksApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901C27552770FBC30043CFFE /* BigRedTalksApp.swift */; };
@@ -27,6 +26,7 @@
 		9079E28C278679890058CDAF /* PremadeButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9079E28B278679890058CDAF /* PremadeButtons.swift */; };
 		907EB5E3278516CA00AFEA2B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 907EB5E2278516CA00AFEA2B /* GoogleService-Info.plist */; };
 		9082F1412784F62E0057AAC7 /* OutOfBoundsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9082F1402784F62E0057AAC7 /* OutOfBoundsView.swift */; };
+		90D5A3B82795E65700AF73B3 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D5A3B72795E65600AF73B3 /* ProfileViewModel.swift */; };
 		E41CF8506E93A187D32834E8 /* Pods_BigRedTalks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29E529B4B8A7189A6DA540E9 /* Pods_BigRedTalks.framework */; };
 /* End PBXBuildFile section */
 
@@ -34,7 +34,6 @@
 		0DA05D5882A23CDC8A82FCF9 /* Pods-BigRedTalks.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BigRedTalks.release.xcconfig"; path = "Target Support Files/Pods-BigRedTalks/Pods-BigRedTalks.release.xcconfig"; sourceTree = "<group>"; };
 		29E529B4B8A7189A6DA540E9 /* Pods_BigRedTalks.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BigRedTalks.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		713BA87E2787965C00A312FF /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
-		7191B82027922F5D0048C349 /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
 		71C64C4E278F6FC700D026DD /* MessagesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewModel.swift; sourceTree = "<group>"; };
 		7FE0BABE80C631ED0AC299F4 /* Pods-BigRedTalks.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BigRedTalks.debug.xcconfig"; path = "Target Support Files/Pods-BigRedTalks/Pods-BigRedTalks.debug.xcconfig"; sourceTree = "<group>"; };
 		901978A5278532A200310D01 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
@@ -55,6 +54,7 @@
 		9079E28B278679890058CDAF /* PremadeButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremadeButtons.swift; sourceTree = "<group>"; };
 		907EB5E2278516CA00AFEA2B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9082F1402784F62E0057AAC7 /* OutOfBoundsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutOfBoundsView.swift; sourceTree = "<group>"; };
+		90D5A3B72795E65600AF73B3 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,7 +81,9 @@
 		901978A42785327700310D01 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				71C64C4E278F6FC700D026DD /* MessagesViewModel.swift */,
 				901978A5278532A200310D01 /* AuthenticationViewModel.swift */,
+				90D5A3B72795E65600AF73B3 /* ProfileViewModel.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -157,8 +159,6 @@
 			isa = PBXGroup;
 			children = (
 				9079E28B278679890058CDAF /* PremadeButtons.swift */,
-				71C64C4E278F6FC700D026DD /* MessagesViewModel.swift */,
-				7191B82027922F5D0048C349 /* ProfileModel.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -313,9 +313,9 @@
 				901C27562770FBC30043CFFE /* BigRedTalksApp.swift in Sources */,
 				904944BB27712775000FE816 /* VerifyLocationView.swift in Sources */,
 				9082F1412784F62E0057AAC7 /* OutOfBoundsView.swift in Sources */,
-				7191B82127922F5D0048C349 /* ProfileModel.swift in Sources */,
 				901978A6278532A200310D01 /* AuthenticationViewModel.swift in Sources */,
 				901EF3D027853C1F00EAC7C6 /* MessagingView.swift in Sources */,
+				90D5A3B82795E65700AF73B3 /* ProfileViewModel.swift in Sources */,
 				9079E2862786461A0058CDAF /* IntroView2.swift in Sources */,
 				9079E28227860B040058CDAF /* HomeView.swift in Sources */,
 				904944B9277125D0000FE816 /* LoadingView.swift in Sources */,
@@ -452,7 +452,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BigRedTalks/Preview Content\"";
-				DEVELOPMENT_TEAM = 74GH3UD64G;
+				DEVELOPMENT_TEAM = 627DJ92YM8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BigRedTalks/Info.plist;
@@ -484,7 +484,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BigRedTalks/Preview Content\"";
-				DEVELOPMENT_TEAM = 74GH3UD64G;
+				DEVELOPMENT_TEAM = 627DJ92YM8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BigRedTalks/Info.plist;

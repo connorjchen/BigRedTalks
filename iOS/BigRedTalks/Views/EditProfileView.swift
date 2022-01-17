@@ -8,12 +8,11 @@
 import SwiftUI
 
 struct EditProfile: View {
-    @Binding var username: String
-    @Binding var color : UIColor
-    @Binding var introNum : Int
     @State private var doneEditing = false
     @EnvironmentObject var authModel: AuthenticationViewModel
-    @ObservedObject var profileModel = ProfileModel()
+    @EnvironmentObject var profileModel: ProfileViewModel
+    @State var username : String = ""
+    @State var color : Color = .red
     
     internal var textStyle = LinearGradient(gradient: Gradient(colors: [Color("darkBlue"), Color("lightBlue")]), startPoint: .top, endPoint: .bottom)
     internal var buttonStyle = LinearGradient(gradient: Gradient(colors: [Color("darkBlue"), Color("lightBlue")]), startPoint: .leading, endPoint: .trailing)
@@ -36,46 +35,84 @@ struct EditProfile: View {
     
     var body: some View {
         if doneEditing {
-            // make sure all this data is right - messagesmodel shouldnt instantiate new one
-            MessagingView(messagesModel: MessagesViewModel(), username: $username, color: $color, introNum: $introNum, messageField: "")
+            MessagingView()
         }
         else {
-            ZStack{
-                VStack {
-                    Spacer()
+            VStack {
+                Spacer()
+                
+                Text("Edit your profile")
+                    .foregroundStyle(textStyle)
+                    .font(.system(size: 40))
+                Text("")
+                    .padding(.bottom, 10.0)
+                VStack(alignment: .leading, spacing: 5){
+                    Text("Change your nickname:")
+                        .font(.system(size: 18))
+                        .fontWeight(.light)
+                        .padding(.leading, 1)
                     
-                    Text("Edit your profile")
-                        .foregroundStyle(textStyle)
-                        .font(.system(size: 40))
-                    Text("")
-                        .padding(.bottom, 10.0)
-                    VStack(alignment: .leading, spacing: 5){
-                        Text("Change your nickname:")
-                            .font(.system(size: 18))
-                            .fontWeight(.light)
-                            .padding(.leading, 1)
-                        
-                        HStack{
-                            TextField("Ex: Touchdown", text: $username)
-                                .frame(width: 280, height: 25)
-                                .font(Font.system(size: 16))
-                                .padding()
-                                .background(RoundedRectangle(cornerRadius: 16).fill(Color(hue: 0.542, saturation: 0.152, brightness: 0.975)))
-                                .foregroundColor(Color(hue: 0.639, saturation: 0.706, brightness: 0.605))
-                                .padding(.bottom, 30)
-                        }
-                        
+                    HStack{
+                        // must limit to alphanumeric and _.,!"'/$ symbols
+                        TextField("Ex: Touchdown", text: $username)
+                            .frame(width: 280, height: 25)
+                            .font(Font.system(size: 16))
+                            .padding()
+                            .background(RoundedRectangle(cornerRadius: 16).fill(Color(hue: 0.542, saturation: 0.152, brightness: 0.975)))
+                            .foregroundColor(Color(hue: 0.639, saturation: 0.706, brightness: 0.605))
+                            .padding(.bottom, 30)
                     }
                     
-                    VStack(alignment: .leading, spacing: 5) {
+                }
+                
+                VStack(alignment: .leading, spacing: 5) {
+                    HStack {
+                        Text("Choose your bubble color:")
+                            .font(.system(size: 18))
+                            .fontWeight(.light)
+                            .padding([.leading], 20)
+                        
+                        makeButton(buttonColor: color)
+                    }
+                    
+                    VStack {
                         HStack {
-                            Text("Choose your bubble color:")
-                                .font(.system(size: 18))
-                                .fontWeight(.light)
-                                .padding([.leading], 20)
+                            Group {
+                                Spacer()
+                
+                                makeButton(buttonColor: .red)
+                                
+                                Spacer()
+                                
+                                makeButton(buttonColor: .blue)
+                                
+                                Spacer()
+                                
+                                makeButton(buttonColor: .green)
+                                
+                                Spacer()
+                                
+                                makeButton(buttonColor: .yellow)
+                                
+                                Spacer()
+                                
+                                makeButton(buttonColor: .purple)
+                            }
                             
-                            makeButton(buttonColor: color)
+                            Group{
+                                Spacer()
+                                
+                                makeButton(buttonColor: .cyan)
+                                
+                                Spacer()
+                                
+                                makeButton(buttonColor: .black)
+                                
+                                Spacer()
+                            }
                         }
+                        .frame(width: 315)
+                        .padding(.vertical, 10.0)
                         
                         VStack {
                             HStack {
@@ -113,8 +150,6 @@ struct EditProfile: View {
                                     Spacer()
                                 }
                             }
-                            .frame(width: 315)
-                            .padding(.vertical, 10.0)
                             
                             HStack {
                                 Group {
@@ -190,9 +225,18 @@ struct EditProfile: View {
                                     Spacer()
                                 }
                             }
-                            .frame(width: 315)
-                            .padding(.bottom, 10.0)
                             
+                            Group{
+                                Spacer()
+                                
+                                makeButton(buttonColor: Color.init(red: 0, green: 160, blue: 0))
+                                
+                                Spacer()
+                                
+                                makeButton(buttonColor: Color(hue: 0.542, saturation: 0.574, brightness: 0.976))
+                                
+                                Spacer()
+                            }
                         }
                         .background( RoundedRectangle(cornerRadius: 20).fill(Color(hue: 0.542, saturation: 0.152, brightness: 0.975)))
                         .frame(width: 350)
@@ -223,13 +267,14 @@ struct EditProfile: View {
                     
                     Spacer()
                 }
-                .frame(
-                    minWidth: 0,
-                    maxWidth: .infinity,
-                    minHeight: 0,
-                    maxHeight: .infinity
-                )
+                Spacer()
             }
+            .frame(
+                minWidth: 0,
+                maxWidth: .infinity,
+                minHeight: 0,
+                maxHeight: .infinity
+            )
         }
     }
 }
@@ -256,6 +301,8 @@ extension UInt8 {
 
 struct EditProfile_Previews: PreviewProvider {
     static var previews: some View {
-        EditProfile(username: .constant("HarrisonChin"), color: .constant(.red), introNum: .constant(4))
+        EditProfile()
+            .environmentObject(AuthenticationViewModel())
+            .environmentObject(ProfileViewModel())
     }
 }
