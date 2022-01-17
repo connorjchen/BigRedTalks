@@ -70,28 +70,28 @@ class MessagesViewModel: ObservableObject {
         .resume()
     }
     
-    func editLikes (messageId: String, messageLikes: [String]) {
-        guard let url = URL(string: baseUrl + messageId) else { return }
-        
-        var request = URLRequest(url: url)
-        request.httpMethod = "PATCH"
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        let body: [String: AnyHashable] = [
-            "likes": messageLikes
-        ]
-        request.httpBody = try? JSONSerialization.data(withJSONObject: body, options: .fragmentsAllowed)
-        
-        URLSession.shared.dataTask(with: request) { data, _, error in
-            guard let data = data, error == nil else { return }
-            
-            do {
-                let response = try JSONSerialization.data(withJSONObject: data, options: .fragmentsAllowed)
-                print(response)
-            } catch {
-                print(error)
-            }
-        }
-        .resume()
-    }
+//    func editLikes (messageId: String, messageLikes: [String]) {
+//        guard let url = URL(string: baseUrl + messageId) else { return }
+//        
+//        var request = URLRequest(url: url)
+//        request.httpMethod = "PATCH"
+//        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+//        let body: [String: AnyHashable] = [
+//            "likes": messageLikes
+//        ]
+//        request.httpBody = try? JSONSerialization.data(withJSONObject: body, options: .fragmentsAllowed)
+//        
+//        URLSession.shared.dataTask(with: request) { data, _, error in
+//            guard let data = data, error == nil else { return }
+//            
+//            do {
+//                let response = try JSONSerialization.data(withJSONObject: data, options: .fragmentsAllowed)
+//                print(response)
+//            } catch {
+//                print(error)
+//            }
+//        }
+//        .resume()
+//    }
 
 }
