@@ -28,9 +28,11 @@ struct HomeView: View {
                         IntroView3(introNum: $introNum)
                     } else if (introNum == 4) {
                         MessagingView()
+                            .environmentObject(profileModel)
                     }
                 } else {
                     MessagingView()
+                        .environmentObject(profileModel)
                 }
 //            } else {
 //                OutOfBoundsView()

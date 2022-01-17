@@ -33,7 +33,11 @@ class ProfileViewModel: ObservableObject {
         guard let url = URL(string: baseUrl + "user/" + userEmail) else { return }
         
         URLSession.shared.dataTask(with: url) { (data, _, _) in
-            self.profile = try! JSONDecoder().decode(TotalProfile.self, from: data!)
+             let result = try! JSONDecoder().decode(TotalProfile.self, from: data!)
+            
+            DispatchQueue.main.async {
+                self.profile = result
+            }
         }
         .resume()
     }

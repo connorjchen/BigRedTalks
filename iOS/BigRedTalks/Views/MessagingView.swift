@@ -14,8 +14,6 @@ struct MessagingView: View {
     @State private var viewProfile = false
     @State var message : String = ""
     
-//    var messages = [Message(id: "0", content: "hello my name is connor and welcome to big red talks, hope you enjoy your experience", name: "Connor"), Message(id: "1", content: "hi", name: "Patrick"), Message(id: "2", content: "im here", name: "Melissa"), Message(id: "3", content: "hello my name is connor and welcome to big red talks, hope you enjoy your experience", name: "Connor"), Message(id: "4", content: "hi", name: "Patrick"), Message(id: "5", content: "im here", name: "Melissa"), Message(id: "6", content: "hello my name is connor and welcome to big red talks, hope you enjoy your experience", name: "Connor"), Message(id: "7", content: "hi", name: "Patrick"), Message(id: "8", content: "im here", name: "Melissa"), Message(id: "9", content: "hello my name is connor and welcome to big red talks, hope you enjoy your experience", name: "Connor"), Message(id: "10", content: "hi", name: "Patrick"), Message(id: "11", content: "im here", name: "Melissa")]
-    
     var body: some View {
         if viewProfile {
             EditProfile()
@@ -24,6 +22,7 @@ struct MessagingView: View {
             NavigationView {
                 VStack {
                     ScrollView {
+                        // should get messages on init but probably doesn't update ever
                         ForEach(messagesModel.messages, id: \._id) { message in
                             HStack {
                                 VStack (alignment: .leading) {
@@ -59,15 +58,15 @@ struct MessagingView: View {
                     Spacer()
                     
                     HStack {
-                        TextField("Message...", text: $message)
+                        TextField("Message", text: $message)
                             .frame(width: 300, height: 50)
                             .font(Font.system(size: 16))
                             .foregroundColor(.black)
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                         
                         Button(action: {
-                            //Send message
-                            // sendMessage(messageContent: <#T##String#>, docId: <#T##String#>)
+                            messagesModel.sendMessage(messageSenderEmail: profileModel.profile.user._id, messageUsername: profileModel.profile.user.username, messageText: self.message)
+                            self.message = ""
                         }, label: {
                             Image(systemName: "arrow.up.circle.fill")
                         })
