@@ -65,17 +65,17 @@ struct MessagingView: View {
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                         
                         Button(action: {
-                            messagesModel.sendMessage(messageSenderEmail: profileModel.profile.user._id, messageUsername: profileModel.profile.user.username, messageText: self.message)
-                            self.message = ""
+                            messagesModel.sendMessage(messageSenderEmail: profileModel.profile.user._id, messageUsername: profileModel.profile.user.username, messageText: self.messageField)
+                            self.messageField = ""
                         }, label: {
                             Image(systemName: "arrow.up.circle.fill")
                         })
                     }
                     .frame(maxWidth: .infinity)
-                    .background(Color(color))
+                    .background(Color(.gray))
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .navigationBarColor(backgroundColor: color, titleColor: .white)
+                .navigationBarColor(backgroundColor: .gray, titleColor: .white)
                 .navigationBarTitle("Big Red Talks")
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {

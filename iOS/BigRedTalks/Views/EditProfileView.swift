@@ -12,7 +12,7 @@ struct EditProfile: View {
     @EnvironmentObject var authModel: AuthenticationViewModel
     @EnvironmentObject var profileModel: ProfileViewModel
     @State var username : String = ""
-    @State var color : Color = .red
+    @State var color : UIColor = .red
     
     internal var textStyle = LinearGradient(gradient: Gradient(colors: [Color("darkBlue"), Color("lightBlue")]), startPoint: .top, endPoint: .bottom)
     internal var buttonStyle = LinearGradient(gradient: Gradient(colors: [Color("darkBlue"), Color("lightBlue")]), startPoint: .leading, endPoint: .trailing)
@@ -229,11 +229,13 @@ struct EditProfile: View {
                             Group{
                                 Spacer()
                                 
-                                makeButton(buttonColor: Color.init(red: 0, green: 160, blue: 0))
+//                                makeButton(buttonColor: Color.init(red: 0, green: 160, blue: 0))
+                                makeButton(buttonColor: UIColor(hue: 0.542, saturation: 0.574, brightness: 0.976, alpha: 1.0))
                                 
                                 Spacer()
                                 
-                                makeButton(buttonColor: Color(hue: 0.542, saturation: 0.574, brightness: 0.976))
+//                                makeButton(buttonColor: Color(hue: 0.542, saturation: 0.574, brightness: 0.976))
+                                makeButton(buttonColor: UIColor(hue: 0.542, saturation: 0.574, brightness: 0.976, alpha: 1.0))
                                 
                                 Spacer()
                             }
@@ -246,7 +248,7 @@ struct EditProfile: View {
                     Spacer()
                     
                     Button {
-                        profileModel.editProfile(id: username, bubbleColor: color.hexa!)
+//                        profileModel.editProfile(id: username, bubbleColor: color.hexa!)
                         self.doneEditing.toggle()
                     } label: {
                         Text("Save and exit")
