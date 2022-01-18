@@ -13,9 +13,6 @@ struct EditProfile: View {
     @State var usernameField : String = ""
     @State var color : UIColor = .red
     
-    internal var textStyle = LinearGradient(gradient: Gradient(colors: [Color("darkBlue"), Color("lightBlue")]), startPoint: .top, endPoint: .bottom)
-    internal var buttonStyle = LinearGradient(gradient: Gradient(colors: [Color("darkBlue"), Color("lightBlue")]), startPoint: .leading, endPoint: .trailing)
-    
     func makeButton(buttonColor : UIColor) -> some View {
         let button =
         Button(action: {
@@ -42,7 +39,7 @@ struct EditProfile: View {
                     Spacer()
                     
                     Text("Edit your profile")
-                        .foregroundStyle(textStyle)
+                        .foregroundStyle(LinearGradient(gradient: Gradient(colors: [Color("darkBlue"), Color("lightBlue")]), startPoint: .top, endPoint: .bottom))
                         .font(.system(size: 40))
                     Text("")
                         .padding(.bottom, 10.0)
@@ -53,6 +50,7 @@ struct EditProfile: View {
                             .padding(.leading, 1)
                         
                         HStack{
+                            // must limit this to alphanumeric and 3-20 characters
                             TextField("Ex: Touchdown", text: $usernameField)
                                 .frame(width: 280, height: 25)
                                 .font(Font.system(size: 16))
@@ -199,13 +197,13 @@ struct EditProfile: View {
                     Spacer()
                     
                     Button {
-//                        profileModel.editProfile(id: username, bubbleColor: color.hexa!)
+                        profileModel.editProfile(userEmail: profileModel.profile.user._id, userColor: self.color.hexa!, userUsername: self.usernameField)
                         self.doneEditing.toggle()
                     } label: {
                         Text("Save and exit")
                             .bold()
                             .frame(width: 250, height: 50)
-                            .overlay(Capsule().stroke(buttonStyle, lineWidth: 4))
+                            .overlay(Capsule().stroke(LinearGradient(gradient: Gradient(colors: [Color("darkBlue"), Color("lightBlue")]), startPoint: .leading, endPoint: .trailing), lineWidth: 4))
                     }
                     .padding(.bottom, 15)
                     
@@ -215,7 +213,7 @@ struct EditProfile: View {
                         Text("Sign out")
                             .bold()
                             .frame(width: 250, height: 50)
-                            .overlay(Capsule().stroke(buttonStyle, lineWidth: 4))
+                            .overlay(Capsule().stroke(LinearGradient(gradient: Gradient(colors: [Color("darkBlue"), Color("lightBlue")]), startPoint: .leading, endPoint: .trailing), lineWidth: 4))
                     }
                     
                     Spacer()
@@ -227,6 +225,10 @@ struct EditProfile: View {
                     maxHeight: .infinity
                 )
             }
+            .onAppear(perform: {
+                usernameField = profileModel.profile.user.username
+                color = UIColor(hex: profileModel.profile.user.color) ?? UIColor.gray
+            })
         }
     }
 }
@@ -241,6 +243,39 @@ extension UIColor {
     var hexa: String? {
         guard let (r,g,b) = rgb else { return nil }
         return "#" + UInt8(r*255).hexa + UInt8(g*255).hexa + UInt8(b*255).hexa
+    }
+    
+    convenience init?(hex: String) {
+        var hexSanitized = hex.trimmingCharacters(in: .whitespacesAndNewlines)
+        hexSanitized = hexSanitized.replacingOccurrences(of: "#", with: "")
+
+        var rgb: UInt32 = 0
+
+        var r: CGFloat = 0.0
+        var g: CGFloat = 0.0
+        var b: CGFloat = 0.0
+        var a: CGFloat = 1.0
+
+        let length = hexSanitized.count
+
+        guard Scanner(string: hexSanitized).scanHexInt32(&rgb) else { return nil }
+
+        if length == 6 {
+            r = CGFloat((rgb & 0xFF0000) >> 16) / 255.0
+            g = CGFloat((rgb & 0x00FF00) >> 8) / 255.0
+            b = CGFloat(rgb & 0x0000FF) / 255.0
+
+        } else if length == 8 {
+            r = CGFloat((rgb & 0xFF000000) >> 24) / 255.0
+            g = CGFloat((rgb & 0x00FF0000) >> 16) / 255.0
+            b = CGFloat((rgb & 0x0000FF00) >> 8) / 255.0
+            a = CGFloat(rgb & 0x000000FF) / 255.0
+
+        } else {
+            return nil
+        }
+
+        self.init(red: r, green: g, blue: b, alpha: a)
     }
 }
 

@@ -12,7 +12,6 @@ struct HomeView: View {
     
     @EnvironmentObject var locationManager: LocationManager
     @EnvironmentObject var authModel: AuthenticationViewModel
-    @StateObject var profileModel = ProfileViewModel()
     @State var introNum = 1
     
     var body: some View {
@@ -28,11 +27,9 @@ struct HomeView: View {
                         IntroView3(introNum: $introNum)
                     } else if (introNum == 4) {
                         MessagingView()
-                            .environmentObject(profileModel)
                     }
                 } else {
                     MessagingView()
-                        .environmentObject(profileModel)
                 }
 //            } else {
 //                OutOfBoundsView()

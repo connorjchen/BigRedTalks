@@ -10,7 +10,7 @@ import GoogleSignIn
 
 struct MessagingView: View {
     @StateObject var messagesModel = MessagesViewModel()
-    @EnvironmentObject var profileModel: ProfileViewModel
+    @StateObject var profileModel = ProfileViewModel()
     @State private var viewProfile = false
     @State var messageField : String = ""
     @FocusState private var messageIsFocused: Bool
@@ -19,6 +19,7 @@ struct MessagingView: View {
     var body: some View {
         if viewProfile {
             EditProfile()
+                .environmentObject(profileModel)
         } else {
             NavigationView {
                 VStack {
@@ -86,10 +87,10 @@ struct MessagingView: View {
                         })
                     }
                     .frame(maxWidth: .infinity)
-                    .background(Color(.gray))
+                    .background(Color.init(UIColor(hex: profileModel.profile.user.color) ?? UIColor.gray))
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .navigationBarColor(backgroundColor: .gray, titleColor: .white)
+                .navigationBarColor(backgroundColor: UIColor(hex: profileModel.profile.user.color), titleColor: .white)
                 .navigationBarTitle("Big Red Talks")
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
