@@ -13,17 +13,16 @@ struct MessagingView: View {
     @EnvironmentObject var profileModel: ProfileViewModel
     @State private var viewProfile = false
     @State var messageField : String = ""
+    @FocusState private var messageIsFocused: Bool
     
     var body: some View {
         if viewProfile {
             EditProfile()
         } else {
-// https://stackoverflow.com/questions/58376681/swiftui-automatically-scroll-to-bottom-in-scrollview-bottom-first for scroll bottom
             NavigationView {
                 VStack {
-                    ScrollView {
-                        // should get messages on init but probably doesn't update ever
-                        ForEach(messagesModel.messages, id: \._id) { message in
+                    ScrollView { 
+                        ForEach(messagesModel.messages.reversed(), id: \._id) { message in
                             HStack {
                                 VStack (alignment: .leading) {
                                     Text(message.username)
@@ -63,9 +62,11 @@ struct MessagingView: View {
                             .font(Font.system(size: 16))
                             .foregroundColor(.black)
                             .textFieldStyle(RoundedBorderTextFieldStyle())
+                            .focused($messageIsFocused)
                         
                         Button(action: {
                             messagesModel.sendMessage(messageSenderEmail: profileModel.profile.user._id, messageUsername: profileModel.profile.user.username, messageText: self.messageField)
+                            messageIsFocused = false
                             self.messageField = ""
                         }, label: {
                             Image(systemName: "arrow.up.circle.fill")
@@ -79,6 +80,16 @@ struct MessagingView: View {
                 .navigationBarTitle("Big Red Talks")
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        Button(action: {
+                            messagesModel.getMessages(messageIndex: 0)
+                        }, label: {
+                            Image(systemName: "arrow.clockwise")
+                                .resizable()
+                                .frame(width: 25, height: 25)
+                                .foregroundColor(.black)
+                        })
+                    }
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button(action: {
                             self.viewProfile.toggle()
