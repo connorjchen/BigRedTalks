@@ -10,48 +10,61 @@ import GoogleSignIn
 
 struct MessagingView: View {
     @StateObject var messagesModel = MessagesViewModel()
-    @EnvironmentObject var profileModel: ProfileViewModel
+    @StateObject var profileModel = ProfileViewModel()
     @State private var viewProfile = false
     @State var messageField : String = ""
+    @FocusState private var messageIsFocused: Bool
+    @State var proxyAlert: Bool = false
     
     var body: some View {
         if viewProfile {
             EditProfile()
+                .environmentObject(profileModel)
         } else {
-// https://stackoverflow.com/questions/58376681/swiftui-automatically-scroll-to-bottom-in-scrollview-bottom-first for scroll bottom
             NavigationView {
                 VStack {
                     ScrollView {
-                        // should get messages on init but probably doesn't update ever
-                        ForEach(messagesModel.messages, id: \._id) { message in
-                            HStack {
-                                VStack (alignment: .leading) {
-                                    Text(message.username)
-                                        .bold()
-                                    Text(message.text)
-                                        .multilineTextAlignment(.leading)
-                                        .padding(.bottom, 5)
-                                }
-
-                                Spacer()
-
-                                Button(action: {
-                                    // like message
-                                }, label: {
-                                    ZStack{
-                                        // take fill away if user is not in the messages' liked list
-                                        Image(systemName: "heart.fill")
-                                            .foregroundColor(.red)
-                                        Image(systemName: "heart")
-                                            .foregroundColor(.black)
+                        ScrollViewReader { scrollViewProxy in
+                            VStack {
+                                ForEach(messagesModel.messages.reversed(), id: \._id) { message in
+                                    HStack {
+                                        VStack (alignment: .leading) {
+                                            Text(message.username)
+                                                .bold()
+                                            Text(message.text)
+                                                .multilineTextAlignment(.leading)
+                                                .padding(.bottom, 5)
+                                        }
+                                        
+                                        Spacer()
+                                        
+                                        Button(action: {
+                                            // like message
+                                        }, label: {
+                                            ZStack{
+                                                // take fill away if user is not in the messages' liked list
+                                                Image(systemName: "heart.fill")
+                                                    .foregroundColor(.red)
+                                                Image(systemName: "heart")
+                                                    .foregroundColor(.black)
+                                            }
+                                        })
+                                        
+                                        // put liked length here
+                                        Text("7")
+                                            .padding(.leading, -7)
                                     }
-                                })
-
-                                // put liked length here
-                                Text("7")
-                                    .padding(.leading, -7)
+                                    .padding(.horizontal, 5)
+                                }
+                                
+                                Spacer()
+                                    .id("EMPTY")
                             }
-                            .padding(.horizontal, 5)
+                            .onChange(of: proxyAlert) { _ in
+                                withAnimation(.easeOut(duration: 0.5)) {
+                                    scrollViewProxy.scrollTo("EMPTY", anchor: .bottom)
+                                }
+                            }
                         }
                     }
                     
@@ -63,22 +76,35 @@ struct MessagingView: View {
                             .font(Font.system(size: 16))
                             .foregroundColor(.black)
                             .textFieldStyle(RoundedBorderTextFieldStyle())
+                            .focused($messageIsFocused)
                         
                         Button(action: {
                             messagesModel.sendMessage(messageSenderEmail: profileModel.profile.user._id, messageUsername: profileModel.profile.user.username, messageText: self.messageField)
+                            messageIsFocused = false
                             self.messageField = ""
                         }, label: {
                             Image(systemName: "arrow.up.circle.fill")
                         })
                     }
                     .frame(maxWidth: .infinity)
-                    .background(Color(.gray))
+                    .background(Color.init(UIColor(hex: profileModel.profile.user.color) ?? UIColor.gray))
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .navigationBarColor(backgroundColor: .gray, titleColor: .white)
+                .navigationBarColor(backgroundColor: UIColor(hex: profileModel.profile.user.color), titleColor: .white)
                 .navigationBarTitle("Big Red Talks")
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        Button(action: {
+                            messagesModel.getMessages(messageIndex: 0)
+                            proxyAlert.toggle()
+                        }, label: {
+                            Image(systemName: "arrow.clockwise")
+                                .resizable()
+                                .frame(width: 25, height: 25)
+                                .foregroundColor(.black)
+                        })
+                    }
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button(action: {
                             self.viewProfile.toggle()
