@@ -14,6 +14,7 @@ struct MessagingView: View {
     @State private var viewProfile = false
     @State var messageField : String = ""
     @FocusState private var messageIsFocused: Bool
+    @State var proxyAlert: Bool = false
     
     var body: some View {
         if viewProfile {
@@ -21,36 +22,48 @@ struct MessagingView: View {
         } else {
             NavigationView {
                 VStack {
-                    ScrollView { 
-                        ForEach(messagesModel.messages.reversed(), id: \._id) { message in
-                            HStack {
-                                VStack (alignment: .leading) {
-                                    Text(message.username)
-                                        .bold()
-                                    Text(message.text)
-                                        .multilineTextAlignment(.leading)
-                                        .padding(.bottom, 5)
-                                }
-
-                                Spacer()
-
-                                Button(action: {
-                                    // like message
-                                }, label: {
-                                    ZStack{
-                                        // take fill away if user is not in the messages' liked list
-                                        Image(systemName: "heart.fill")
-                                            .foregroundColor(.red)
-                                        Image(systemName: "heart")
-                                            .foregroundColor(.black)
+                    ScrollView {
+                        ScrollViewReader { scrollViewProxy in
+                            VStack {
+                                ForEach(messagesModel.messages.reversed(), id: \._id) { message in
+                                    HStack {
+                                        VStack (alignment: .leading) {
+                                            Text(message.username)
+                                                .bold()
+                                            Text(message.text)
+                                                .multilineTextAlignment(.leading)
+                                                .padding(.bottom, 5)
+                                        }
+                                        
+                                        Spacer()
+                                        
+                                        Button(action: {
+                                            // like message
+                                        }, label: {
+                                            ZStack{
+                                                // take fill away if user is not in the messages' liked list
+                                                Image(systemName: "heart.fill")
+                                                    .foregroundColor(.red)
+                                                Image(systemName: "heart")
+                                                    .foregroundColor(.black)
+                                            }
+                                        })
+                                        
+                                        // put liked length here
+                                        Text("7")
+                                            .padding(.leading, -7)
                                     }
-                                })
-
-                                // put liked length here
-                                Text("7")
-                                    .padding(.leading, -7)
+                                    .padding(.horizontal, 5)
+                                }
+                                
+                                Spacer()
+                                    .id("EMPTY")
                             }
-                            .padding(.horizontal, 5)
+                            .onChange(of: proxyAlert) { _ in
+                                withAnimation(.easeOut(duration: 0.5)) {
+                                    scrollViewProxy.scrollTo("EMPTY", anchor: .bottom)
+                                }
+                            }
                         }
                     }
                     
@@ -83,6 +96,7 @@ struct MessagingView: View {
                     ToolbarItem(placement: .navigationBarLeading) {
                         Button(action: {
                             messagesModel.getMessages(messageIndex: 0)
+                            proxyAlert.toggle()
                         }, label: {
                             Image(systemName: "arrow.clockwise")
                                 .resizable()
