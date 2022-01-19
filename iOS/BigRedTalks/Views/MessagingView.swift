@@ -72,7 +72,8 @@ struct MessagingView: View {
                                             .padding(.leading, -3)
                                     }
                                     .padding(.horizontal, 5)
-                                    .background(message.senderEmail == profileModel.profile.user._id ? Color.init((UIColor(hex: profileModel.profile.user.color) ?? UIColor.gray).withAlphaComponent(0.5)) : .white)
+                                    // this code is for highlighting messages you sent
+//                                    .background(message.senderEmail == profileModel.profile.user._id ? Color.init((UIColor(hex: profileModel.profile.user.color) ?? UIColor.gray).withAlphaComponent(0.5)) : .white)
                                 }
                                 
                                 Spacer()
