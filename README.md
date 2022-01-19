@@ -1,5 +1,5 @@
 # Big Red Talks
-<img src="https://github.com/connorjchen/BigRedTalks/blob/main/assets/BRTlogo.png" width="300" />
+<img src="https://github.com/connorjchen/BigRedTalks/blob/main/assets/banner.jpeg" width="1000" />
 
 Created in January 2022
 
@@ -17,7 +17,9 @@ Big Red Talks is an iOS mobile application that connects Cornell students togeth
 
 ### Screenshots
 <p float="left">
-  <img src="https://github.com/connorjchen/BigRedTalks/blob/main/assets/bigredtalks1.png" width="300" />
-  <img src="https://github.com/connorjchen/BigRedTalks/blob/main/assets/bigredtalks7.png" width="300" />
-  <img src="https://github.com/connorjchen/BigRedTalks/blob/main/assets/bigredtalks8.png" width="300" />
+  <img src="https://github.com/connorjchen/BigRedTalks/blob/main/assets/image1.jpeg" width="190" />
+  <img src="https://github.com/connorjchen/BigRedTalks/blob/main/assets/image2.jpeg" width="190" />
+  <img src="https://github.com/connorjchen/BigRedTalks/blob/main/assets/image3.jpeg" width="190" />
+  <img src="https://github.com/connorjchen/BigRedTalks/blob/main/assets/image4.jpeg" width="190" /> 
+  <img src="https://github.com/connorjchen/BigRedTalks/blob/main/assets/image5.jpeg" width="190" />
 </p>
