@@ -1,4 +1,5 @@
 # Big Red Talks
+<img src="https://github.com/connorjchen/BigRedTalks/blob/main/assets/BRTlogo.png" width="300" />
 
 Created in January 2022
 
