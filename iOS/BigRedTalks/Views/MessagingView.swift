@@ -40,21 +40,36 @@ struct MessagingView: View {
                                         
                                         Spacer()
                                         
-                                        Button(action: {
-                                            // like message
-                                        }, label: {
-                                            ZStack{
-                                                // take fill away if user is not in the messages' liked list
-                                                Image(systemName: "heart.fill")
-                                                    .foregroundColor(.red)
-                                                Image(systemName: "heart")
-                                                    .foregroundColor(.black)
-                                            }
-                                        })
+                                        if (message.likes.contains(profileModel.profile.user._id)) {
+                                            Button(action: {
+                                                messagesModel.editLikes(messageId: message._id, messageLikes: message.likes, isAdd: false, userId: profileModel.profile.user._id)
+                                            }, label: {
+                                                ZStack{
+                                                    Image(systemName: "heart.fill")
+                                                        .resizable()
+                                                        .frame(width: 17, height: 15)
+                                                        .foregroundColor(.red)
+                                                    Image(systemName: "heart")
+                                                        .resizable()
+                                                        .frame(width: 17, height: 15)
+                                                        .foregroundColor(.black)
+                                                }
+                                            })
+                                        } else {
+                                            Button(action: {
+                                                messagesModel.editLikes(messageId: message._id, messageLikes: message.likes, isAdd: true, userId: profileModel.profile.user._id)
+                                            }, label: {
+                                                ZStack{
+                                                    Image(systemName: "heart")
+                                                        .resizable()
+                                                        .frame(width: 17, height: 15)
+                                                        .foregroundColor(.black)
+                                                }
+                                            })
+                                        }
                                         
-                                        // put liked length here
-                                        Text("7")
-                                            .padding(.leading, -7)
+                                        Text(String(message.likes.count))
+                                            .padding(.leading, -3)
                                     }
                                     .padding(.horizontal, 5)
                                 }
