@@ -64,7 +64,7 @@ struct EditProfile: View {
                     
                     VStack(alignment: .leading, spacing: 5) {
                         HStack {
-                            Text("Choose your bubble color:")
+                            Text("Choose your color:")
                                 .font(.system(size: 18))
                                 .fontWeight(.light)
                                 .padding([.leading], 20)
