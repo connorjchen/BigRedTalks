@@ -7,6 +7,7 @@
 
 import SwiftUI
 import GoogleSignIn
+import Introspect
 
 struct MessagingView: View {
     @StateObject var messagesModel = MessagesViewModel()
@@ -15,6 +16,7 @@ struct MessagingView: View {
     @State var messageField : String = ""
     @FocusState private var messageIsFocused: Bool
     @State var proxyAlert: Bool = false
+    @State private var nav: UINavigationController?
     
     var body: some View {
         if viewProfile {
@@ -89,76 +91,52 @@ struct MessagingView: View {
                     .frame(maxWidth: .infinity)
                     .background(Color.init(UIColor(hex: profileModel.profile.user.color) ?? UIColor.gray))
                 }
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .navigationBarColor(backgroundColor: UIColor(hex: profileModel.profile.user.color), titleColor: .white)
                 .navigationBarTitle("Big Red Talks")
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
-                    ToolbarItem(placement: .navigationBarLeading) {
-                        Button(action: {
-                            messagesModel.getMessages(messageIndex: 0)
-                            proxyAlert.toggle()
-                        }, label: {
-                            Image(systemName: "arrow.clockwise")
-                                .resizable()
-                                .frame(width: 25, height: 25)
-                                .foregroundColor(.black)
-                        })
-                    }
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        Button(action: {
-                            self.viewProfile.toggle()
-                        }, label: {
-                            Image(systemName: "gearshape")
-                                .resizable()
-                                .frame(width: 25, height: 25)
-                                .foregroundColor(.black)
-                        })
-                    }
+                        ToolbarItem(placement: .navigationBarLeading) {
+                            Button(action: {
+                                messagesModel.getMessages(messageIndex: 0)
+                                proxyAlert.toggle()
+                            }, label: {
+                                Image(systemName: "arrow.clockwise")
+                                    .resizable()
+                                    .frame(width: 25, height: 25)
+                                    .foregroundColor(.black)
+                            })
+                        }
+                        ToolbarItem(placement: .navigationBarTrailing) {
+                            Button(action: {
+                                self.viewProfile.toggle()
+                            }, label: {
+                                Image(systemName: "gearshape")
+                                    .resizable()
+                                    .frame(width: 25, height: 25)
+                                    .foregroundColor(.black)
+                            })
+                        }
                 }
             }
+            .introspectNavigationController { nav in
+                        self.nav = nav
+                        updateNavBar()
+                    }
+            .onChange(of: Color.init(UIColor(hex: profileModel.profile.user.color) ?? UIColor.gray)) { _ in
+                        updateNavBar()
+                    }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
     }
-}
-
-struct NavigationBarModifier: ViewModifier {
-    
-    var backgroundColor: UIColor?
-    var titleColor: UIColor?
-    
-    init(backgroundColor: UIColor?, titleColor: UIColor?) {
-        self.backgroundColor = backgroundColor
-        let coloredAppearance = UINavigationBarAppearance()
-        coloredAppearance.configureWithTransparentBackground()
-        coloredAppearance.backgroundColor = backgroundColor
-        coloredAppearance.titleTextAttributes = [.foregroundColor: titleColor ?? .white]
-        coloredAppearance.largeTitleTextAttributes = [.foregroundColor: titleColor ?? .white]
-        
-        UINavigationBar.appearance().standardAppearance = coloredAppearance
-        UINavigationBar.appearance().compactAppearance = coloredAppearance
-        UINavigationBar.appearance().scrollEdgeAppearance = coloredAppearance
+    private func updateNavBar() {
+            guard let nav = nav else { return }
+            let navbarAppearance = UINavigationBarAppearance()
+            navbarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+            navbarAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+            navbarAppearance.backgroundColor = UIColor(Color.init(UIColor(hex: profileModel.profile.user.color) ?? UIColor.gray))
+            nav.navigationBar.standardAppearance = navbarAppearance
+            nav.navigationBar.compactAppearance = navbarAppearance
+            nav.navigationBar.scrollEdgeAppearance = navbarAppearance
     }
-    
-    func body(content: Content) -> some View {
-        ZStack{
-            content
-            VStack {
-                GeometryReader { geometry in
-                    Color(self.backgroundColor ?? .gray)
-                        .frame(height: geometry.safeAreaInsets.top)
-                        .edgesIgnoringSafeArea(.top)
-                    Spacer()
-                }
-            }
-        }
-    }
-}
-
-extension View {
-    func navigationBarColor(backgroundColor: UIColor?, titleColor: UIColor?) -> some View {
-        self.modifier(NavigationBarModifier(backgroundColor: backgroundColor, titleColor: titleColor))
-    }
-    
 }
 
 struct MessagingView_Previews: PreviewProvider {

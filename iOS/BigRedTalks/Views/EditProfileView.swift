@@ -234,48 +234,49 @@ struct EditProfile: View {
 }
 
 extension UIColor {
-    var rgb: (red: CGFloat, green: CGFloat, blue: CGFloat)? {
-            var r: CGFloat = 0, g: CGFloat = 0, b: CGFloat = 0
-            guard getRed(&r, green: &g, blue: &b, alpha: nil) else { return nil }
-            return (r,g,b)
-        }
+    var hsb: (hue: CGFloat, saturation: CGFloat, brightness: CGFloat)? {
+            var h: CGFloat = 0, s: CGFloat = 0, b: CGFloat = 0
+            guard getHue(&h, saturation: &s, brightness: &b, alpha: nil)
+                else { return nil }
+            return (h,s,b)
+    }
     //Converts the hsb value to hex
     var hexa: String? {
-        guard let (r,g,b) = rgb else { return nil }
-        return "#" + UInt8(r*255).hexa + UInt8(g*255).hexa + UInt8(b*255).hexa
+        guard let (h,s,b) = hsb else { return nil }
+        return "#" + UInt8(h*255).hexa + UInt8(s*255).hexa + UInt8(b*255).hexa
     }
     
     convenience init?(hex: String) {
         var hexSanitized = hex.trimmingCharacters(in: .whitespacesAndNewlines)
         hexSanitized = hexSanitized.replacingOccurrences(of: "#", with: "")
 
-        var rgb: UInt32 = 0
+        var hsb: UInt32 = 0
 
-        var r: CGFloat = 0.0
-        var g: CGFloat = 0.0
+        var h: CGFloat = 0.0
+        var s: CGFloat = 0.0
         var b: CGFloat = 0.0
         var a: CGFloat = 1.0
 
         let length = hexSanitized.count
 
-        guard Scanner(string: hexSanitized).scanHexInt32(&rgb) else { return nil }
+        guard Scanner(string: hexSanitized).scanHexInt32(&hsb) else { return nil }
 
         if length == 6 {
-            r = CGFloat((rgb & 0xFF0000) >> 16) / 255.0
-            g = CGFloat((rgb & 0x00FF00) >> 8) / 255.0
-            b = CGFloat(rgb & 0x0000FF) / 255.0
+            h = CGFloat((hsb & 0xFF0000) >> 16) / 255.0
+            s = CGFloat((hsb & 0x00FF00) >> 8) / 255.0
+            b = CGFloat(hsb & 0x0000FF) / 255.0
 
         } else if length == 8 {
-            r = CGFloat((rgb & 0xFF000000) >> 24) / 255.0
-            g = CGFloat((rgb & 0x00FF0000) >> 16) / 255.0
-            b = CGFloat((rgb & 0x0000FF00) >> 8) / 255.0
-            a = CGFloat(rgb & 0x000000FF) / 255.0
+            h = CGFloat((hsb & 0xFF000000) >> 24) / 255.0
+            s = CGFloat((hsb & 0x00FF0000) >> 16) / 255.0
+            b = CGFloat((hsb & 0x0000FF00) >> 8) / 255.0
+            a = CGFloat(hsb & 0x000000FF) / 255.0
 
         } else {
             return nil
         }
 
-        self.init(red: r, green: g, blue: b, alpha: a)
+        self.init(hue: h, saturation: s, brightness: b, alpha: a)
     }
 }
 
