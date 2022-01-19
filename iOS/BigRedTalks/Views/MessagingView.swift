@@ -72,6 +72,7 @@ struct MessagingView: View {
                                             .padding(.leading, -3)
                                     }
                                     .padding(.horizontal, 5)
+                                    .background(message.senderEmail == profileModel.profile.user._id ? Color.init((UIColor(hex: profileModel.profile.user.color) ?? UIColor.gray).withAlphaComponent(0.5)) : .white)
                                 }
                                 
                                 Spacer()
@@ -101,6 +102,7 @@ struct MessagingView: View {
                             self.messageField = ""
                         }, label: {
                             Image(systemName: "arrow.up.circle.fill")
+                                .foregroundColor(Color.init((UIColor(hex: profileModel.profile.user.color) ?? UIColor.gray).darker(by: 20)!))
                         })
                     }
                     .frame(maxWidth: .infinity)
