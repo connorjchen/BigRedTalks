@@ -20,6 +20,6 @@ Big Red Talks is an iOS mobile application that connects Cornell students togeth
   <img src="https://github.com/connorjchen/BigRedTalks/blob/main/assets/image1.jpeg" width="150" />
   <img src="https://github.com/connorjchen/BigRedTalks/blob/main/assets/image2.jpeg" width="150" />
   <img src="https://github.com/connorjchen/BigRedTalks/blob/main/assets/image3.jpeg" width="150" />
-  <img src="https://github.com/connorjchen/BigRedTalks/blob/main/assets/image4.jpeg" width="150" /> 
+  <img src="https://github.com/connorjchen/BigRedTalks/blob/main/assets/image4v2.jpeg" width="150" /> 
   <img src="https://github.com/connorjchen/BigRedTalks/blob/main/assets/image5.jpeg" width="150" />
 </p>
