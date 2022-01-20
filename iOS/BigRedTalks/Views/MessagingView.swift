@@ -89,25 +89,35 @@ struct MessagingView: View {
                     
                     Spacer()
                     
-                    HStack {
-                        TextField("Message", text: $messageField)
-                            .frame(width: 300, height: 50)
-                            .font(Font.system(size: 16))
-                            .foregroundColor(.black)
-                            .textFieldStyle(RoundedBorderTextFieldStyle())
-                            .focused($messageIsFocused)
+                    HStack{
+                        HStack {
+                            TextField("Message", text: $messageField)
+                                .frame(height: 45)
+                                .foregroundColor(.black)
+                            //                                .textFieldStyle(RoundedBorderTextFieldStyle())
+                                .focused($messageIsFocused)
+                            
+                            Button(action: {
+                                messagesModel.sendMessage(messageSenderEmail: profileModel.profile.user._id, messageUsername: profileModel.profile.user.username, messageText: self.messageField)
+                                messageIsFocused = false
+                                self.messageField = ""
+                            }, label: {
+                                Image(systemName: "paperplane.fill")
+                                    .foregroundColor(.white)
+                                    .padding(5)
+                                    .background(Color.init((UIColor(hex: profileModel.profile.user.color) ?? UIColor.gray).darker(by: 10)!))
+                                    .cornerRadius(20)
+                                
+                            })
+                        }
+                        .padding(.horizontal)
+                        .background(.white)
+                        .cornerRadius(50)
+                        .padding()
                         
-                        Button(action: {
-                            messagesModel.sendMessage(messageSenderEmail: profileModel.profile.user._id, messageUsername: profileModel.profile.user.username, messageText: self.messageField)
-                            messageIsFocused = false
-                            self.messageField = ""
-                        }, label: {
-                            Image(systemName: "arrow.up.circle.fill")
-                                .foregroundColor(Color.init((UIColor(hex: profileModel.profile.user.color) ?? UIColor.gray).darker(by: 20)!))
-                        })
                     }
-                    .frame(maxWidth: .infinity)
                     .background(Color.init(UIColor(hex: profileModel.profile.user.color) ?? UIColor.gray))
+   
                 }
                 .navigationBarTitle("Big Red Talks")
                 .navigationBarTitleDisplayMode(.inline)
