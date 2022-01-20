@@ -105,7 +105,7 @@ struct MessagingView: View {
                                 Image(systemName: "paperplane.fill")
                                     .foregroundColor(.white)
                                     .padding(5)
-                                    .background(Color.init((UIColor(hex: profileModel.profile.user.color) ?? UIColor.gray).darker(by: 20)!))
+                                    .background(Color.init((UIColor(hex: profileModel.profile.user.color) ?? UIColor.gray).darker(by: 10)!))
                                     .cornerRadius(20)
                                 
                             })
