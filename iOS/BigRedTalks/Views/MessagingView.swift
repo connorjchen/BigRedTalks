@@ -35,7 +35,7 @@ struct MessagingView: View {
                                                 .bold()
                                             Text(message.text)
                                                 .multilineTextAlignment(.leading)
-                                                .padding(.bottom, 5)
+                                                .padding(.bottom, 3)
                                         }
                                         
                                         Spacer()
@@ -86,6 +86,7 @@ struct MessagingView: View {
                             }
                         }
                     }
+                    .padding(.bottom, -10)
                     
                     Spacer()
                     
