@@ -9,7 +9,7 @@ Created in January 2022
 - Harrison Chin - Frontend Developer
 - Matthew Chan - Backend Developer
 - Patrick Chen - Backend Developer
-- Melissa Chen - UI/UX Developer
+- Melissa Chen - UI/UX Developer 
 
 ### Description
 
