@@ -5,8 +5,8 @@ Created in January 2022
 
 ### Members
 
-- Connor Chen - Frontend Developer
-- Harrison Chin - Frontend Developer
+- Connor Chen - iOS Developer
+- Harrison Chin - iOS Developer
 - Matthew Chan - Backend Developer
 - Patrick Chen - Backend Developer
 - Melissa Chen - UI/UX Developer 
